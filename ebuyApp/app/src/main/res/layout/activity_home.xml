@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include layout="@layout/header"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/contentView"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/silver_grey"
+        android:layout_height="2dp"/>
+    <android.support.v7.widget.CardView
+        android:outlineProvider="bounds"
+        android:paddingTop="2dp"
+        android:layout_marginTop="-2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+            android:paddingLeft="@dimen/smallest"
+            android:paddingRight="@dimen/smallest"
+            android:id="@+id/btnHome"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50">
+            <ImageView
+                android:id="@+id/ivHome"
+                android:src="@drawable/ic_home"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_width="30dp"
+                android:paddingTop="@dimen/smallest"
+
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/txtHome"
+                android:layout_weight="1"
+                android:text="@string/txt_home"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/dim_gray"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>.<LinearLayout
+            android:paddingLeft="@dimen/smallest"
+            android:paddingRight="@dimen/smallest"
+            android:id="@+id/btnList"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50">
+            <ImageView
+                android:id="@+id/ivList"
+                android:src="@drawable/ic_list"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_width="30dp"
+                android:paddingTop="@dimen/smallest"
+
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/txtList"
+                android:layout_weight="1"
+                android:text="@string/txt_list"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/dim_gray"
+                android:textStyle="normal"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="@dimen/smallest"
+                android:paddingRight="@dimen/smallest"
+                android:id="@+id/btnShopping"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50">
+                <ImageView
+                    android:id="@+id/ivShopping"
+                    android:src="@drawable/ic_shopping"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="30dp"
+                    android:paddingTop="@dimen/smallest"
+
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:id="@+id/txtShopping"
+                    android:layout_weight="1"
+                    android:text="@string/txt_shopping"
+                    android:textSize="@dimen/font_normal"
+                    android:textColor="@color/dim_gray"
+                    android:textStyle="normal"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="@dimen/smallest"
+                android:paddingRight="@dimen/smallest"
+                android:id="@+id/btnUser"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50">
+                <ImageView
+                    android:id="@+id/ivUser"
+                    android:src="@drawable/ic_user"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="30dp"
+                    android:paddingTop="@dimen/smallest"
+
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:id="@+id/txtUser"
+                    android:layout_weight="1"
+                    android:text="@string/txt_user"
+                    android:textSize="@dimen/font_normal"
+                    android:textColor="@color/dim_gray"
+                    android:textStyle="normal"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

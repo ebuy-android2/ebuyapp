@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_light"
+            android:id="@+id/linearLayout"
+            android:orientation="vertical">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_small">
+
+                <ImageView
+                    android:id="@+id/imgview"
+                    android:layout_width="@dimen/size_200"
+                    android:layout_height="@dimen/size_200"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_large" />
+
+                <TextView
+                    android:id="@+id/txtNamePro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_largeXX" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtpricePro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textColor="@color/color_main"
+                    android:textSize="@dimen/font_big" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtNumLike"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="@dimen/padding_smallX"
+                        android:text="1"
+                        android:textSize="@dimen/font_small"
+                        android:drawableLeft="@drawable/ic_like"
+                        android:drawablePadding="@dimen/padding_smallXX"/>
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="@style/MyRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:rating="3"
+                        />
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtNumStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="@dimen/font_small"
+                        android:padding="@dimen/padding_smallXX"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_small">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgAvatarShop"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:civ_border_color="@color/color_main"
+                        app:civ_border_width="1dp" />
+
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtNameShop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/padding_smallX"
+                        android:text="Name"
+                        android:textSize="@dimen/font_big"
+                        android:textColor="@color/black"/>
+
+                    <Button
+                        android:id="@+id/seeShop"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/bg_border_button"
+                        android:text="Xem Shop"
+                        android:textAllCaps="false"
+                        android:textColor="@color/color_main"
+                        android:textSize="@dimen/font_small" />
+                </LinearLayout>
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/padding_smallX"
+                    android:text="Địa chỉ"
+                    android:textSize="@dimen/font_big" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chi tiết sản phẩm"
+                        android:textSize="@dimen/font_big"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="12 tháng"
+                        android:textSize="@dimen/font_big"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    >
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="2"
+                        >
+
+
+                        <TextView
+                            android:layout_height="@dimen/line"
+                            android:background="@color/gray_darkx"/>
+                        <TableRow>
+
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:layout_width="wrap_content"
+                                android:padding="@dimen/padding_small"
+                                android:text="Danh mục"
+                                android:textSize="@dimen/font_big"
+                                android:background="@color/gray_light"
+                                android:textColor="@color/black"/>
+
+                            <TextView
+                                android:layout_width="@dimen/line"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray_darkx" />
+
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtDanhmuc"
+                                android:layout_marginLeft="@dimen/margin_small"
+                                android:gravity="left"
+
+                                android:text="abc"
+                                android:textSize="@dimen/font_big" />
+
+
+                        </TableRow>
+
+                        <TextView
+                            android:layout_height="@dimen/line"
+                            android:background="@color/gray_darkx"/>
+
+                        <TableRow>
+
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:padding="@dimen/padding_small"
+                                android:text="Thương hiệu"
+                                android:textSize="@dimen/font_big"
+                                android:background="@color/gray_light"
+                                android:textColor="@color/black"/>
+                            <TextView
+                                android:layout_width="@dimen/line"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray_darkx" />
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtThuonhieu"
+
+                                android:layout_marginLeft="@dimen/margin_small"
+                                android:gravity="left"
+                                android:text="abc"
+                                android:textSize="@dimen/font_big" />
+                        </TableRow>
+
+
+                        <TextView
+                            android:layout_height="@dimen/line"
+                            android:background="@color/gray_darkx"/>
+                        <TableRow>
+
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:padding="@dimen/padding_small"
+                                android:text="Chất liệu"
+                                android:textSize="@dimen/font_big"
+                                android:background="@color/gray_light"
+                                android:textColor="@color/black"/>
+                            <TextView
+                                android:layout_width="@dimen/line"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray_darkx" />
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtChatlieu"
+                                android:layout_marginLeft="@dimen/margin_small"
+                                android:gravity="left"
+                                android:text="abc"
+                                android:textSize="@dimen/font_big" />
+                        </TableRow>
+
+                        <TextView
+                            android:layout_height="@dimen/line"
+                            android:background="@color/gray_darkx"/>
+
+                        <TableRow>
+
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:padding="@dimen/padding_small"
+                                android:text="Gửi từ"
+                                android:textSize="@dimen/font_big"
+                                android:background="@color/gray_light"
+                                android:textColor="@color/black"/>
+
+                            <TextView
+                                android:layout_width="@dimen/line"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray_darkx" />
+                            <com.example.admin.ebuy.view.EBCustomFont
+                                android:id="@+id/txtGuitu"
+                                android:layout_marginLeft="@dimen/margin_small"
+                                android:gravity="left"
+                                android:text="abc"
+                                android:textSize="@dimen/font_big" />
+                        </TableRow>
+                        <TextView
+                            android:layout_height="@dimen/line"
+                            android:background="@color/gray_darkx"/>
+                    </TableLayout>
+
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtDetailPro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_smallXX"
+                        android:text="thông tin"
+                        android:padding="@dimen/padding_small"
+                        android:textSize="@dimen/font_big" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_small"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh Giá Sản Phẩm"
+                        android:textSize="@dimen/font_big" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyFeedbackList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        >
+
+                    </android.support.v7.widget.RecyclerView>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_small"
+                    android:layout_marginBottom="@dimen/margin_large"
+
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sản phẩm liên quan"
+                        android:textSize="@dimen/font_big" />
+                    <android.support.v7.widget.RecyclerView
+
+                        android:id="@+id/recyclerviewPro"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:numColumns="2"
+                        android:layout_marginBottom="@dimen/margin_large"
+                        >
+
+                    </android.support.v7.widget.RecyclerView>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/blue">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_shopping_plus"
+                android:tint="@color/white"
+                />
+
+        <!--<TextView-->
+            <!---->
+            <!--android:id="@+id/txtAddtoBasket"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/blue"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:drawableLeft="@drawable/ic_shopping_plus"-->
+            <!--android:drawableTint="@color/color_main"-->
+            <!--android:textSize="@dimen/font_large" />-->
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtBuynow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/color_main"
+            android:gravity="center"
+
+            android:textColor="@color/white"
+            android:text="Mua"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+</RelativeLayout>

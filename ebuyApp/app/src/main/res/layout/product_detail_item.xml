@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_margin="@dimen/margin_smallXX"
+        android:gravity="center"
+        >
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="@dimen/size_150"
+            android:layout_height="@dimen/size_150" />
+        <com.example.admin.ebuy.view.EBCustomFont
+            android:id="@+id/txtNamePro"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:textSize="@dimen/font_big"
+            android:textColor="@color/black"
+            android:padding="@dimen/padding_small"
+
+            />
+        <com.example.admin.ebuy.view.EBCustomFont
+            android:id="@+id/pricePro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black"
+
+            android:padding="@dimen/padding_small"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <com.example.admin.ebuy.view.EBCustomFont
+                android:id="@+id/txtNumLike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_smallX"
+                android:text="1"
+                android:textSize="@dimen/font_small"
+                android:drawableLeft="@drawable/ic_like"
+                android:drawablePadding="@dimen/padding_smallXX"/>
+            <RatingBar
+               android:id="@+id/ratingBar"
+                style="@style/MyRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rating="3"
+                />
+            <com.example.admin.ebuy.view.EBCustomFont
+                android:id="@+id/txtNumStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="@dimen/font_small"
+                android:padding="@dimen/padding_smallXX"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

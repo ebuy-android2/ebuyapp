@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_main">#FF7D09</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBgProfile">#FFBDBD</color>
+    <color name="flat_green">#639E42</color>
+    <color name="black">#000000</color>
+    <color name="black_70">#B3000000</color>
+    <color name="grey_70">#B3e7e4e4</color>
+    <color name="purple">#8925A4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_90">#90ffffff</color>
+    <color name="white_50">#50ffffff</color>
+    <color name="white_30">#30ffffff</color>
+    <color name="grey">#7B7B7B</color>
+    <color name="silver">#e7e4e4</color>
+    <color name="silver_grey">#C0C0C0</color>
+    <color name="nobel">#9A9A9A</color>
+    <color name="dim_gray">#626262</color>
+    <color name="grey_light">#F2F2F2</color>
+    <color name="orange">#F5A623</color>
+    <color name="orange_dark">#DBA901</color>
+    <color name="green_light">#7ED321</color>
+    <color name="blue">#4A90E2</color>
+    <color name="blue_white">#d292bdef</color>
+    <color name="grey_bg">#f0f2f4</color>
+    <color name="red_calendar">#ff0000</color>
+    <color name="yellow">#F3F781</color>
+    <color name="green_dark">#1CC436</color>
+    <color name="gray_light">#f6f6f6</color>
+    <color name="gray_darkxx">#414141</color>
+    <color name="bg_red">#da4453</color>
+    <color name="gray_dark">#c9c9ce</color>
+    <color name="gray_darkx">#bcb8b8</color>
+
+    <color name="toolbar">#3c4256</color>
+    <color name="toolbar_h">#393e4e</color>
+</resources>

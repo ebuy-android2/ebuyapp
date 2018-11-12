@@ -24,8 +24,6 @@ public class User {
     @JsonField(name = "access_token")
     private String accessToken="";
 
-
-
     public static final int SHIPPER = 1;
     public static final int CUSTOMER = 2;
 

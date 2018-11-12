@@ -1,5 +1,6 @@
 package com.example.admin.ebuy.home;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,9 +58,6 @@ public class ProductDetailFragment extends BaseFragment{
     RecyclerView recyclerViewCommet,recyclerViewPro;
     LinearLayoutManager linearLayoutManager,linearLayoutManagerHorizontal;
 
-    private ViewPager contentView;
-    private HomeAdapter homeAdapter;
-
     ListProductAdapter listProductAdapter;
     LinearLayout linearLayout;
     GestureDetector gestureDetector;
@@ -75,8 +73,6 @@ public class ProductDetailFragment extends BaseFragment{
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
 
-        homeAdapter = new HomeAdapter(getChildFragmentManager(), this);
-        contentView = (ViewPager)view.findViewById(R.id.contentView);
 
         mapped(view);
         Gson gson = new Gson();
@@ -116,7 +112,10 @@ public class ProductDetailFragment extends BaseFragment{
                             getActivity().finish();
                         }
                         else {
-                            Navigator.getInstance().startFragment(getContext(), ShoppingFragment.TAG,SupportActivity.class,null);
+                            Bundle bundle;
+                            bundle = new Bundle();
+                            bundle.putInt("data",2);
+                            Navigator.getInstance().startActivity(getContext(),HomeActivity.class,bundle);
                             getActivity().finish();
                         }
                     }

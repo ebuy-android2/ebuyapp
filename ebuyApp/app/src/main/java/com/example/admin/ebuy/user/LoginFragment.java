@@ -153,7 +153,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                 }
                 break;
             case R.id.btnRegister:
-                Navigator.getInstance().startFragment(getContext(),RegisterFragment.TAG, HomeActivity.class, null);
+                Navigator.getInstance().startFragment(getContext(), RegisterFragment.TAG, HomeActivity.class, null);
                 break;
             case R.id.btnForgotPass:
                 break;

@@ -1,18 +1,21 @@
 package com.example.admin.ebuy.home.activity;
 
 import android.os.Bundle;
+import android.support.annotation.RequiresPermission;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.HomeAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
+import com.example.admin.ebuy.util.WriteLog;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
-    private ViewPager contentView;
+    public ViewPager contentView;
     private HomeAdapter homeAdapter;
     private LinearLayout btnHome,btnShopping,btnUser,btnList;
     ImageView ivhome,ivlist,ivshopping,ivuser;
@@ -47,8 +50,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
         btnUser.setOnClickListener(this);
 
         ivhome.setImageResource(R.drawable.ic_home_checked);
-        checkPager();
-        startFirstFragment();
+//        checkPager();
+
+        savedInstanceState = getIntent().getExtras();
+        WriteLog.e("Toan",""+savedInstanceState.getInt("data"));
+        int conten =savedInstanceState.getInt("data");
+        checkPager(conten);
 
        contentView.addOnPageChangeListener(this);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -98,16 +105,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
         }
     }
 
-    private void checkPager()
+    private void checkPager(int conten)
     {
-        int i = contentView.getCurrentItem();
-        switch (i){
+        contentView.setCurrentItem(conten);
+        switch (conten){
             case 0:
+
                 ivhome.setImageResource(R.drawable.ic_home_checked);
                 ivlist.setImageResource(R.drawable.ic_list);
                 ivshopping.setImageResource(R.drawable.ic_shopping);
                 ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(0);
                 break;
             case 1:
                 ivlist.setImageResource(R.drawable.ic_list_checked);
@@ -115,7 +122,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
 
                 ivshopping.setImageResource(R.drawable.ic_shopping);
                 ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(1);
+
                 break;
             case 2:
                 ivshopping.setImageResource(R.drawable.ic_shopping_checked);
@@ -123,14 +130,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 ivlist.setImageResource(R.drawable.ic_list);
 
                 ivuser.setImageResource(R.drawable.ic_user);
-                contentView.setCurrentItem(2);
+
                 break;
             case 3:
                 ivhome.setImageResource(R.drawable.ic_home);
                 ivlist.setImageResource(R.drawable.ic_list);
                 ivshopping.setImageResource(R.drawable.ic_shopping);
                 ivuser.setImageResource(R.drawable.ic_user_checked);
-                contentView.setCurrentItem(3);
                 break;
         }
     }

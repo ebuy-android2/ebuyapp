@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.adapter.FeedbackAdapter;
+import com.example.admin.ebuy.adapter.HomeAdapter;
 import com.example.admin.ebuy.adapter.ListProductAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.base.BaseFragment;
@@ -45,7 +47,7 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class ProductDetailFragment extends BaseFragment {
+public class ProductDetailFragment extends BaseFragment{
     public static final String TAG = "ProductDetailFragment";
     EBCustomFont txtpricePro, txtDanhmuc, txtThuonhieu, txtChatlieu, txtGuitu, txtDetailPro,txtNumLike,txtNumStar;
     TextView txtNamePro,txtNameShop,txtAddressShop, txtBuynow;
@@ -54,6 +56,9 @@ public class ProductDetailFragment extends BaseFragment {
     FeedbackAdapter feedbackAdapter;
     RecyclerView recyclerViewCommet,recyclerViewPro;
     LinearLayoutManager linearLayoutManager,linearLayoutManagerHorizontal;
+
+    private ViewPager contentView;
+    private HomeAdapter homeAdapter;
 
     ListProductAdapter listProductAdapter;
     LinearLayout linearLayout;
@@ -68,6 +73,10 @@ public class ProductDetailFragment extends BaseFragment {
 
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
+
+
+        homeAdapter = new HomeAdapter(getChildFragmentManager(), this);
+        contentView = (ViewPager)view.findViewById(R.id.contentView);
 
         mapped(view);
         Gson gson = new Gson();

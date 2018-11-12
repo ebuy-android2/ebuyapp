@@ -1,23 +1,18 @@
 package com.example.admin.ebuy.adapter;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
-import com.example.admin.ebuy.activity.HomeActivity;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.model.ProductDetailData;
-import com.example.admin.ebuy.model.home.ProductDetailFragment;
-import com.example.admin.ebuy.model.respon.ProductDetailResponse;
+import com.example.admin.ebuy.home.ProductDetailFragment;
 import com.example.admin.ebuy.util.Navigator;
 import com.example.admin.ebuy.view.EBCustomFont;
 import com.google.gson.Gson;

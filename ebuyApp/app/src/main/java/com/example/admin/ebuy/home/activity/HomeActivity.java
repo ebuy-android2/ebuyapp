@@ -1,4 +1,4 @@
-package com.example.admin.ebuy.activity;
+package com.example.admin.ebuy.home.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -10,8 +10,6 @@ import android.widget.RelativeLayout;
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.HomeAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
-import com.example.admin.ebuy.model.home.ProductDetailFragment;
-import com.example.admin.ebuy.util.Navigator;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
     private ViewPager contentView;

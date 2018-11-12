@@ -1,7 +1,6 @@
 package com.example.admin.ebuy.model;
 
 import com.bluelinelabs.logansquare.LoganSquare;
-import com.example.admin.ebuy.User.User;
 import com.example.admin.ebuy.util.PrefUtils;
 
 

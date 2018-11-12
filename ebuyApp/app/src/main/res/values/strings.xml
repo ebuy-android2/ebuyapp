@@ -18,8 +18,9 @@
     <string name="txt_support">Trợ giúp</string>
 
     <string name="error">Lỗi xảy ra</string>
-    <string name="empty_user_name">Số điện thoại không được để trống </string>
+    <string name="empty_user_name">Tên đăng nhập không để rỗng</string>
     <string name="empty_pin">Chưa nhập mã PIN </string>
+    <string name="warning" translatable="false">WARNING</string>
 
 
     <string name="alert">Thông báo</string>
@@ -54,4 +55,14 @@
     <string name="ic_report">q</string>
     <string name="ic_next">c</string>
     <string name="ic_menu_header"></string>
+
+    <string name="email">Email</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="confirmpassword">Nhập lại mật khẩu</string>
+    <string name="forgetpassword">Quên mật khẩu ?</string>
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đắng ký</string>
+
+
 </resources>

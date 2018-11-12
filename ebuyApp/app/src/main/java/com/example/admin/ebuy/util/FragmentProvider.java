@@ -3,13 +3,14 @@ package com.example.admin.ebuy.util;
 import android.os.Bundle;
 
 import com.example.admin.ebuy.base.BaseFragment;
-import com.example.admin.ebuy.model.home.HomeFragment;
-import com.example.admin.ebuy.model.home.ProductDetailFragment;
-import com.example.admin.ebuy.model.home.TypeFragment;
-import com.example.admin.ebuy.model.home.TypeProductFragment;
-import com.example.admin.ebuy.model.list.ListProductFragment;
-import com.example.admin.ebuy.model.shopping.ShoppingFragment;
-import com.example.admin.ebuy.model.user.UserFragment;
+import com.example.admin.ebuy.home.HomeFragment;
+import com.example.admin.ebuy.home.ProductDetailFragment;
+import com.example.admin.ebuy.home.TypeFragment;
+import com.example.admin.ebuy.home.TypeProductFragment;
+import com.example.admin.ebuy.list.ListProductFragment;
+import com.example.admin.ebuy.shopping.ShoppingFragment;
+import com.example.admin.ebuy.user.LoginFragment;
+import com.example.admin.ebuy.user.UserFragment;
 
 
 /**
@@ -45,11 +46,8 @@ public class FragmentProvider {
                 return new TypeFragment();
             case TypeProductFragment.TAG:
                 return new TypeProductFragment();
-//            case LoginFragment.TAG:
-//                return new LoginFragment();
-
-
-
+            case LoginFragment.TAG:
+                return new LoginFragment();
         }
 
         if (fragment != null)

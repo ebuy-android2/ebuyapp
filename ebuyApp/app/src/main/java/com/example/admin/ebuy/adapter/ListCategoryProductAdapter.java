@@ -9,17 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseFragment;
-import com.example.admin.ebuy.inter.ItemClickListener;
 import com.example.admin.ebuy.model.ProductData;
 import com.example.admin.ebuy.model.TypeData;
 import com.example.admin.ebuy.model.TypeProductData;
-import com.example.admin.ebuy.model.home.TypeFragment;
-import com.example.admin.ebuy.model.home.TypeProductFragment;
+import com.example.admin.ebuy.home.TypeFragment;
+import com.example.admin.ebuy.home.TypeProductFragment;
 import com.example.admin.ebuy.util.Navigator;
 import com.squareup.picasso.Picasso;
 

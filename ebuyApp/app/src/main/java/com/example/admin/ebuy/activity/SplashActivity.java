@@ -5,7 +5,8 @@ import android.os.Handler;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.base.BaseActivity;
-import com.example.admin.ebuy.model.home.HomeFragment;
+import com.example.admin.ebuy.home.HomeFragment;
+import com.example.admin.ebuy.home.activity.HomeActivity;
 import com.example.admin.ebuy.util.Navigator;
 
 public class SplashActivity extends BaseActivity {

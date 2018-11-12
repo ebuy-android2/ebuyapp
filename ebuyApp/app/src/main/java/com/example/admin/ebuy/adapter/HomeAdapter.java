@@ -3,13 +3,12 @@ package com.example.admin.ebuy.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.ListFragment;
 
 import com.example.admin.ebuy.base.BaseActivity;
-import com.example.admin.ebuy.model.home.HomeFragment;
-import com.example.admin.ebuy.model.list.ListProductFragment;
-import com.example.admin.ebuy.model.shopping.ShoppingFragment;
-import com.example.admin.ebuy.model.user.UserFragment;
+import com.example.admin.ebuy.home.HomeFragment;
+import com.example.admin.ebuy.list.ListProductFragment;
+import com.example.admin.ebuy.shopping.ShoppingFragment;
+import com.example.admin.ebuy.user.UserFragment;
 
 
 /**

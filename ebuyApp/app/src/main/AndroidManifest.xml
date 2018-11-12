@@ -26,9 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" >
-
         </activity>
-        <activity android:name=".activity.HomeActivity"
+        <activity android:name=".user.activity.UserActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".home.activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>

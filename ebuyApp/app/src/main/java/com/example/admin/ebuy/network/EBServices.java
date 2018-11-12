@@ -2,6 +2,8 @@ package com.example.admin.ebuy.network;
 
 import android.graphics.Bitmap;
 
+import com.example.admin.ebuy.model.request.LoginRequest;
+import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
 import com.example.admin.ebuy.model.respon.LikeResponse;
@@ -10,6 +12,7 @@ import com.example.admin.ebuy.model.respon.ProductResponse;
 import com.example.admin.ebuy.model.respon.StarResponse;
 import com.example.admin.ebuy.model.respon.TypeProductResponse;
 import com.example.admin.ebuy.model.respon.TypeResponse;
+import com.example.admin.ebuy.model.respon.UserResponse;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -28,12 +31,12 @@ import rx.Observable;
 public interface EBServices {
 
     String PATH="/api";
-//    @GET("/api/configs")
-//    Observable<ConfigResponse> getConfig();
-//
-//    @POST("/api/customers/login")
-//    @Headers("Content-Type: application/json")
-//    Observable<UserResponse> customerLogin(@Body LoginRequest loginRequest, @Query("time") String time);
+    @GET(PATH+"/configs")
+    Observable<ConfigResponse> getConfig();
+
+    @POST(PATH+"/customers/login")
+    @Headers("Content-Type: application/json")
+    Observable<UserResponse> customerLogin(@Body LoginRequest loginRequest);
 //
 //    @Multipart
 //    @Headers("Content-Type: application/json")

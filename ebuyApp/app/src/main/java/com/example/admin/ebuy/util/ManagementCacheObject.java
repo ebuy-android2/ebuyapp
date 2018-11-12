@@ -1,7 +1,7 @@
 package com.example.admin.ebuy.util;
 
 import com.bluelinelabs.logansquare.LoganSquare;
-import com.example.admin.ebuy.User.User;
+import com.example.admin.ebuy.model.User;
 import com.example.admin.ebuy.model.Config;
 
 import java.io.IOException;

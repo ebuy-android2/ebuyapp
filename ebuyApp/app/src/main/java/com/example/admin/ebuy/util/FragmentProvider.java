@@ -10,6 +10,7 @@ import com.example.admin.ebuy.home.TypeProductFragment;
 import com.example.admin.ebuy.list.ListProductFragment;
 import com.example.admin.ebuy.shopping.ShoppingFragment;
 import com.example.admin.ebuy.user.LoginFragment;
+import com.example.admin.ebuy.user.RegisterFragment;
 import com.example.admin.ebuy.user.UserFragment;
 
 
@@ -48,6 +49,8 @@ public class FragmentProvider {
                 return new TypeProductFragment();
             case LoginFragment.TAG:
                 return new LoginFragment();
+            case RegisterFragment.TAG:
+                return new RegisterFragment();
         }
 
         if (fragment != null)

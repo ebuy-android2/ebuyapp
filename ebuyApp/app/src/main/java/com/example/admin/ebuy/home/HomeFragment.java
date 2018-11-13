@@ -39,7 +39,7 @@ public class HomeFragment extends BaseFragment implements ObservableScrollViewCa
     LinearLayoutManager linearLayoutManager;
     private GridView gridViewProduct;
     private ListProductDetailAdapter listProductDetailAdapter;
-   GridLayoutManager gridLayoutManager;
+    GridLayoutManager gridLayoutManager;
     ObservableScrollView observableScrollView;
     RelativeLayout rlHeader;
 

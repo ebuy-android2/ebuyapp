@@ -2,6 +2,7 @@ package com.example.admin.ebuy.user;
 
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.UserResponse;
 import com.example.admin.ebuy.network.EBServices;
 import com.example.admin.ebuy.network.ServiceFactory;
+import com.example.admin.ebuy.user.activity.UserActivity;
 import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.Navigator;
 import com.example.admin.ebuy.util.PrefUtils;
@@ -52,6 +54,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
         btnforgotPass = (EBCustomFont) view.findViewById(R.id.btnForgotPass);
 
         btnLogin.setOnClickListener(this);
+        btnRegister.setOnClickListener(this);
         getConfig();
 
     }
@@ -133,6 +136,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                             if (LoginFragment.this != null && getActivity() != null && isAdded())
                                 ((BaseActivity) getActivity()).setLoading(false);
                             alertError(e.getMessage(), SweetAlertDialog.ERROR_TYPE, getResources().getString(R.string.error));
+                            onErrorReceive(e);
                         }
 
                         @Override
@@ -140,11 +144,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                             WriteLog.e("Triệu", userResponse.toString());
 
                             if (userResponse.getReplyCode() != AppConfig.SUCCESS_CODE) {
+                                handlerError(userResponse);
                                 alertError(userResponse.getReplyText(), SweetAlertDialog.ERROR_TYPE, getResources().getString(R.string.error));
                             } else {
                                     CurrentUser.setUserInfo(userResponse.getUser());
                                     CurrentUser.saveUserInfo(userResponse.getUser());
                                     getActivity().finish();
+//                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
+//                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
+//                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
+//                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
+
 //                                    Navigator.getInstance().startFragment();
 //                                    getActivity().finish();
                             }
@@ -153,7 +163,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                 }
                 break;
             case R.id.btnRegister:
-                Navigator.getInstance().startFragment(getContext(), RegisterFragment.TAG, HomeActivity.class, null);
+                Navigator.getInstance().startFragment(getContext(), RegisterFragment.TAG, UserActivity.class, null);
+                getActivity().finish();
                 break;
             case R.id.btnForgotPass:
                 break;

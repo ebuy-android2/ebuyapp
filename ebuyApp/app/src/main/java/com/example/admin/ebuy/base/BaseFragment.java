@@ -1,6 +1,8 @@
 package com.example.admin.ebuy.base;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,12 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import com.example.admin.ebuy.R;
+import com.example.admin.ebuy.model.CurrentUser;
+import com.example.admin.ebuy.model.respon.BaseResponse;
+import com.example.admin.ebuy.user.LoginFragment;
+import com.example.admin.ebuy.user.activity.UserActivity;
+import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.Navigator;
 import com.example.admin.ebuy.util.WriteLog;
+
+import java.util.Objects;
 
 import javax.inject.Inject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import retrofit2.adapter.rxjava.HttpException;
 
 
 /**
@@ -74,16 +85,55 @@ public abstract class BaseFragment extends Fragment {
         self = this;
     }
 
+    public void onErrorReceive(Throwable e) {
+        try {
+            if (((HttpException) e).code() == 401) {
+                CurrentUser.setUserInfo(null);
+                CurrentUser.saveUserInfo(null);
+                Intent it = new Intent(getActivity(), UserActivity.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Navigator.getInstance().startFragmentIntent(getActivity(), LoginFragment.TAG, it, null);
+                getActivity().finish();
+            }
+        } catch (Exception error) {
 
+        }
+
+    }
     public void alertError(String message, int type_error, String title) {
-        new SweetAlertDialog(self.getActivity(), type_error)
-                .setTitleText(title)
-                .setContentText(message)
-                .show();
+        if (getActivity() != null && this != null && isAdded())
+            new SweetAlertDialog(self.getActivity(), type_error)
+                    .setTitleText(title)
+                    .setContentText(message)
+                    .showCancelButton(true)
+                    .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.cancel();
+                        }
+                    })
+                    .show();
+    }
+    public void handlerError(BaseResponse baseResponse) {
+        if (baseResponse.getReplyCode() == AppConfig.AUT_CODE) {
+            returnLogin();
+        } else {
+            alertError(getResources().getString(R.string.error), SweetAlertDialog.ERROR_TYPE, baseResponse.getReplyText());
+        }
 
     }
 
-
+    public void returnLogin() {
+        CurrentUser.setUserInfo(null);
+        CurrentUser.saveUserInfo(null);
+        Intent it = new Intent(getActivity(), UserActivity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Navigator.getInstance().startFragmentIntent(getActivity(), LoginFragment.TAG, it, null);
+        getActivity().finish();
+//        Navigator.getInstance().startFragment(context, LoginFragment.TAG, UserActivity.class, data);
+    }
     @Override
     public void onResume() {
         super.onResume();

@@ -17,11 +17,26 @@
             android:layout_height="wrap_content"
             />
         <EditText
+            android:id="@+id/txtUserName"
+            android:layout_marginTop="@dimen/margin_smallX"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/bg_bored_white"
             android:drawablePadding="5dp"
-            android:hint="@string/email"
+            android:hint="@string/username"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/gray_darkx"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="7dp"
+            android:textColor="@color/edit_color"
+            android:textSize="14sp" />
+        <EditText
+            android:id="@+id/txtPhonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_bored_white"
+            android:drawablePadding="5dp"
+            android:hint="@string/phone_number"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/gray_darkx"
             android:inputType="text"
@@ -29,6 +44,7 @@
             android:textColor="@color/edit_color"
             android:textSize="14sp" />
         <EditText
+            android:id="@+id/txtPassword"
             android:layout_marginTop="@dimen/margin_smallX"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -42,6 +58,7 @@
             android:textColor="@color/edit_color"
             android:textSize="14sp" />
         <EditText
+            android:id="@+id/txtConfirmPassword"
             android:layout_marginTop="@dimen/margin_smallX"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -54,36 +71,24 @@
             android:paddingLeft="7dp"
             android:textColor="@color/edit_color"
             android:textSize="14sp" />
-        <EditText
-            android:layout_marginTop="@dimen/margin_smallX"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_bored_white"
-            android:drawablePadding="5dp"
-            android:hint="@string/username"
-            android:textCursorDrawable="@null"
-            android:textColorHint="@color/gray_darkx"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="7dp"
-            android:textColor="@color/edit_color"
-            android:textSize="14sp" />
+
         <Button
             android:layout_width="match_parent"
             android:text="@string/register"
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnRegister"
             android:background="@drawable/button_gray_hover"
             android:textColor="@color/black"
             android:layout_height="35dp"
             android:layout_marginTop="@dimen/largeX"
             />
-        <Button
-            android:layout_width="match_parent"
-            android:id="@+id/btnRegister"
-            android:text="@string/login"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_blue_hover"
-            android:textColor="@color/white"
-            android:layout_height="35dp" />
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/btnRegister"-->
+            <!--android:text="@string/login"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="@drawable/button_blue_hover"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:layout_height="35dp" />-->
 
     </LinearLayout>
 

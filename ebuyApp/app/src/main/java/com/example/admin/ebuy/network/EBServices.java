@@ -3,12 +3,14 @@ package com.example.admin.ebuy.network;
 import android.graphics.Bitmap;
 
 import com.example.admin.ebuy.model.request.LoginRequest;
+import com.example.admin.ebuy.model.request.RegisterRequest;
 import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
 import com.example.admin.ebuy.model.respon.LikeResponse;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
+import com.example.admin.ebuy.model.respon.RegisterResponse;
 import com.example.admin.ebuy.model.respon.StarResponse;
 import com.example.admin.ebuy.model.respon.TypeProductResponse;
 import com.example.admin.ebuy.model.respon.TypeResponse;
@@ -37,6 +39,10 @@ public interface EBServices {
     @POST(PATH+"/customers/login")
     @Headers("Content-Type: application/json")
     Observable<UserResponse> customerLogin(@Body LoginRequest loginRequest);
+
+    @POST(PATH+"/customers/register")
+    @Headers("Content-Type: application/json")
+    Observable<RegisterResponse> customerRegister(@Body RegisterRequest registerRequest);
 //
 //    @Multipart
 //    @Headers("Content-Type: application/json")

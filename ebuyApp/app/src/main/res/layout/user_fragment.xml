@@ -22,7 +22,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_150"
+                android:layout_height="@dimen/size_200"
                 android:background="@drawable/bien">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -45,8 +45,8 @@
                     android:typeface="serif" />
                 <com.example.admin.ebuy.view.EBCustomFont
                     android:id="@+id/btnLogin"
-                    android:layout_width="@dimen/size_70"
-                    android:layout_height="@dimen/size_20"
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_30"
                     android:layout_below="@id/txtUserName"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/small"
@@ -59,8 +59,8 @@
 
                 <com.example.admin.ebuy.view.EBCustomFont
                     android:id="@+id/btnRegister"
-                    android:layout_width="@dimen/size_70"
-                    android:layout_height="@dimen/size_20"
+                    android:layout_width="@dimen/size_80"
+                    android:layout_height="@dimen/size_30"
                     android:layout_below="@id/txtUserName"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/btnLogin"
@@ -87,25 +87,50 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.example.admin.ebuy.view.EBCustomFont
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/buy"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_largeX"
-                    android:typeface="normal" />
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtBuy"
+                        android:layout_width="match_parent"
+                        android:layout_height="39.5dp"
+                        android:text="@string/buy"
+                        android:gravity="center"
+                        android:textColor="@color/color_main"
+                        android:textSize="@dimen/font_largeX"
+                        android:typeface="normal" />
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_main"/>
 
-                <com.example.admin.ebuy.view.EBCustomFont
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/sale"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_largeX"
-                    android:typeface="normal" />
+                    android:layout_height="@dimen/size_40"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/txtSale"
+                        android:layout_width="match_parent"
+                        android:layout_height="39.5dp"
+                        android:text="@string/sale"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_largeX"
+                        android:typeface="normal" />
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -158,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:drawableTop="@drawable/email"
-                        android:paddingLeft="@dimen/small"
+                        android:gravity="center_vertical"
                         android:textAlignment="center"
                         android:text="@string/wait_accept"
                         android:typeface="normal" />
@@ -168,7 +193,6 @@
                         android:layout_weight="1"
                         android:drawableTop="@drawable/deliverytruck"
                         android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/small"
                         android:textAlignment="center"
                         android:text="@string/wait_take"
                         android:typeface="normal" />
@@ -180,7 +204,6 @@
                         android:drawableTop="@drawable/archive"
                         android:gravity="center_vertical"
                         android:text="@string/delivering"
-                        android:paddingLeft="@dimen/small"
                         android:textAlignment="center"
                         android:typeface="normal" />
 
@@ -190,7 +213,6 @@
                         android:layout_weight="1"
                         android:drawableTop="@drawable/returnbox"
                         android:gravity="center_vertical"
-                        android:paddingLeft="@dimen/small"
                         android:textAlignment="center"
                         android:text="@string/return_product"
                         android:typeface="normal" />
@@ -459,7 +481,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40"
-                    android:layout_marginTop="@dimen/smallestX"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:background="@color/white"
                     android:orientation="horizontal">
 

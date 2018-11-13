@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.admin.ebuy.R;
@@ -141,6 +142,16 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    public void setVisibleToolbar(boolean allCap){
+
+        if (findViewById(R.id.rlHeader)!=null){
+            if(allCap ==true){
+                ((RelativeLayout)findViewById(R.id.rlHeader)).setVisibility(View.VISIBLE);
+            }
+            else
+                ((RelativeLayout)findViewById(R.id.rlHeader)).setVisibility(View.GONE);
+        }
+    }
     public String getDeviceId() {
         String android_id = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);

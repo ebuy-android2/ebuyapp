@@ -1,6 +1,7 @@
 package com.example.admin.ebuy.user;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -149,11 +150,19 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                             } else {
                                     CurrentUser.setUserInfo(userResponse.getUser());
                                     CurrentUser.saveUserInfo(userResponse.getUser());
-                                    getActivity().finish();
-                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
-                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
-                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
-                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
+
+//                                    ViewGroup viewGroup = (ViewGroup) getLayoutInflater().inflate(R.layout.user_fragment, null);
+//                                    EBCustomFont btnLogin = (EBCustomFont)viewGroup.findViewById(R.id.btnLogin);
+//                                    btnLogin.setVisibility(View.INVISIBLE);
+//                                    EBCustomFont btnRegister = (EBCustomFont)viewGroup.findViewById(R.id.btnRegister);
+//                                    btnRegister.setVisibility(View.INVISIBLE);
+
+                                   getChildFragmentManager().popBackStack();
+
+//                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
+//                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
+//                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
+//                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
 
 //                                    Navigator.getInstance().startFragment();
 //                                    getActivity().finish();

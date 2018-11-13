@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1010496830510",
+    "firebase_url": "https://icar-12b9f.firebaseio.com",
+    "project_id": "icar-12b9f",
+    "storage_bucket": "icar-12b9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010496830510:android:c0898ab0fd97da4d",
+        "android_client_info": {
+          "package_name": "com.example.admin.ebuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010496830510-l2rq3rbbomhi93tgrcsbjs1fduuogo2i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin.ebuy",
+            "certificate_hash": "149e988731cf00ac08c2e91f3c4d6b1748bb8d03"
+          }
+        },
+        {
+          "client_id": "1010496830510-a4hib838h71ouk1vedvudav7gbg4091m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdamU1U5tMVubPLavNxnNigbK505bA_sI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010496830510-a4hib838h71ouk1vedvudav7gbg4091m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

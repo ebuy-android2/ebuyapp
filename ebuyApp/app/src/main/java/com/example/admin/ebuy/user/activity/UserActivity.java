@@ -19,7 +19,6 @@ public class UserActivity extends BaseActivity {
 
     @Override
     public void loadControl(Bundle savedInstanceState) {
-
         startFirstFragment();
     }
 

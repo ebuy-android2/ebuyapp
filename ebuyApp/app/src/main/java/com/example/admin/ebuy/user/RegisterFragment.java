@@ -23,6 +23,7 @@ import com.example.admin.ebuy.network.ServiceFactory;
 import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.PrefUtils;
 import com.example.admin.ebuy.util.WriteLog;
+import com.example.admin.ebuy.view.EBCustomFont;
 
 import java.io.UnsupportedEncodingException;
 
@@ -52,7 +53,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 //        btnLogin = (Button)view.findViewById(R.id.btnLogin);
         btnRegister = (Button)view.findViewById(R.id.btnRegister);
 
-//        getConfig();
+        getConfig();
         btnRegister.setOnClickListener(this);
 
     }
@@ -143,7 +144,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                 } else {
                     CurrentUser.setUserInfo(userResponse.getUser());
                     CurrentUser.saveUserInfo(userResponse.getUser());
-                    getActivity().finish();
+                    getChildFragmentManager().popBackStack();
 //                                    Navigator.getInstance().startFragment();
 //                                    getActivity().finish();
                 }
@@ -182,10 +183,17 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                                 if (registerResponse.getReplyCode() != AppConfig.SUCCESS_CODE) {
                                     alertError(registerResponse.getReplyText(), SweetAlertDialog.ERROR_TYPE, getResources().getString(R.string.error));
                                 } else{
-                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
-                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
-                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
-                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
+
+//                                    ViewGroup viewGroup = (ViewGroup) getLayoutInflater().inflate(R.layout.user_fragment, null);
+//                                    EBCustomFont btnLogin = (EBCustomFont)viewGroup.findViewById(R.id.btnLogin);
+//                                    btnLogin.setVisibility(View.INVISIBLE);
+//                                    EBCustomFont btnRegister = (EBCustomFont)viewGroup.findViewById(R.id.btnRegister);
+//                                    btnRegister.setVisibility(View.INVISIBLE);
+
+//                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
+//                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
+//                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
+//                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
                                     login(txtUserName.getText().toString(), txtPassword.getText().toString());
                                 }
                             }

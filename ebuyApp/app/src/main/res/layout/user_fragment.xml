@@ -23,15 +23,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_150"
-                android:background="@drawable/bien"
-                android:orientation="horizontal">
+                android:background="@drawable/bien">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageAvatar"
                     android:layout_width="@dimen/size_80"
                     android:layout_height="@dimen/size_80"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/margin_small"
+                    android:layout_marginStart="@dimen/margin_small"
                     android:src="@drawable/logo" />
 
                 <com.example.admin.ebuy.view.EBCustomFont
@@ -44,6 +43,19 @@
                     android:text="@string/username"
                     android:textColor="@color/white"
                     android:typeface="serif" />
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/btnLogin"
+                    android:layout_width="@dimen/size_70"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_below="@id/txtUserName"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/small"
+                    android:layout_marginRight="@dimen/small"
+                    android:layout_toEndOf="@id/txtUserName"
+                    android:background="@drawable/bg_border_organ"
+                    android:gravity="center"
+                    android:text="@string/login"
+                    android:textColor="@color/white" />
 
                 <com.example.admin.ebuy.view.EBCustomFont
                     android:id="@+id/btnRegister"
@@ -57,20 +69,7 @@
                     android:text="@string/register"
                     android:textColor="@color/white" />
 
-                <com.example.admin.ebuy.view.EBCustomFont
-                    android:id="@+id/btnLogin"
-                    android:layout_width="@dimen/size_70"
-                    android:layout_height="@dimen/size_20"
-                    android:layout_below="@id/txtUserName"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/small"
-                    android:layout_marginRight="@dimen/small"
-                    android:layout_toEndOf="@id/txtUserName"
-                    android:layout_toLeftOf="@id/btnRegister"
-                    android:background="@drawable/bg_border_organ"
-                    android:gravity="center"
-                    android:text="@string/login"
-                    android:textColor="@color/white" />
+
 
                 <ImageView
                     android:id="@+id/btnSetting"
@@ -203,8 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40"
                     android:layout_marginTop="@dimen/smallestX"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:background="@color/white">
 
                     <com.example.admin.ebuy.view.EBCustomFont
                         android:layout_width="wrap_content"
@@ -231,8 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40"
                     android:layout_marginTop="@dimen/smallestX"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:background="@color/white">
 
                     <com.example.admin.ebuy.view.EBCustomFont
                         android:layout_width="wrap_content"
@@ -453,10 +450,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutSale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

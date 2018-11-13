@@ -182,10 +182,10 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                                 if (registerResponse.getReplyCode() != AppConfig.SUCCESS_CODE) {
                                     alertError(registerResponse.getReplyText(), SweetAlertDialog.ERROR_TYPE, getResources().getString(R.string.error));
                                 } else{
-//                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
-//                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
-//                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
-//                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
+                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
+                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
+                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
+                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
                                     login(txtUserName.getText().toString(), txtPassword.getText().toString());
                                 }
                             }

@@ -150,10 +150,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
                                     CurrentUser.setUserInfo(userResponse.getUser());
                                     CurrentUser.saveUserInfo(userResponse.getUser());
                                     getActivity().finish();
-//                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
-//                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
-//                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
-//                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
+                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
+                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
+                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
+                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
 
 //                                    Navigator.getInstance().startFragment();
 //                                    getActivity().finish();

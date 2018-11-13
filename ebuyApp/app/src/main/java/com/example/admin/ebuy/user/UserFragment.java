@@ -27,13 +27,13 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
-//        btnSetting = (ImageView)view.findViewById(R.id.btnSetting);
-//        imageAvatar = (CircleImageView) view.findViewById(R.id.imageAvatar);
-//        btnLogin = (EBCustomFont)view.findViewById(R.id.btnLogin);
-//        btnRegister = (EBCustomFont)view.findViewById(R.id.btnRegister);
-//
-//        btnLogin.setOnClickListener(this);
-//        btnRegister.setOnClickListener(this);
+        btnSetting = (ImageView)view.findViewById(R.id.btnSetting);
+        imageAvatar = (CircleImageView) view.findViewById(R.id.imageAvatar);
+        btnLogin = (EBCustomFont)view.findViewById(R.id.btnLogin);
+        btnRegister = (EBCustomFont)view.findViewById(R.id.btnRegister);
+
+        btnLogin.setOnClickListener(this);
+        btnRegister.setOnClickListener(this);
 
     }
 
@@ -45,18 +45,18 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-//            case R.id.btnSetting:
-//                break;
-//            case R.id.btnLogin:
-//                Navigator.getInstance().startFragment(getContext(),LoginFragment.TAG, UserActivity.class,null);
-//                getActivity().finish();
-//                break;
-//            case R.id.btnRegister:
-//                Navigator.getInstance().startFragment(getContext(),RegisterFragment.TAG, UserActivity.class,null);
-//                getActivity().finish();
-//                break;
-//            case R.id.imageAvatar:
-//                break;
+            case R.id.btnSetting:
+                break;
+            case R.id.btnLogin:
+                Navigator.getInstance().startFragment(getContext(),LoginFragment.TAG, UserActivity.class,null);
+                getActivity().finish();
+                break;
+            case R.id.btnRegister:
+                Navigator.getInstance().startFragment(getContext(),RegisterFragment.TAG, UserActivity.class,null);
+                getActivity().finish();
+                break;
+            case R.id.imageAvatar:
+                break;
         }
     }
 }

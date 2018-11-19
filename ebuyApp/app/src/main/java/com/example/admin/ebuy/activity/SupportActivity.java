@@ -23,8 +23,7 @@ public class SupportActivity extends BaseActivity {
     public void loadControl(Bundle savedInstanceState) {
         this.getWindow().setStatusBarColor(getResources().getColor(R.color.color_main));
         ((BaseActivity)this).setVisibleBack(true);
-
-
+        ((BaseActivity)this).setVisibleFinish(false);
 
         startFirstFragment();
     }

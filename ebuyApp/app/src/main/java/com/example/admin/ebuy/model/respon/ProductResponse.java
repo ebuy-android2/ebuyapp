@@ -9,8 +9,6 @@ import java.util.ArrayList;
 @JsonObject
 public class ProductResponse extends BaseResponse {
 
-
-
     @JsonField(name = "data")
     private ArrayList<ProductData> data;
 

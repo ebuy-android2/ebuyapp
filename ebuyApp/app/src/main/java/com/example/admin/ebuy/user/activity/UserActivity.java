@@ -1,6 +1,7 @@
 package com.example.admin.ebuy.user.activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.base.BaseActivity;
@@ -18,8 +19,9 @@ public class UserActivity extends BaseActivity {
     }
 
     @Override
-    public void loadControl(Bundle savedInstanceState) {
+    public void loadControl(Bundle savedInstanceState){
         startFirstFragment();
+        this.getWindow().setStatusBarColor(getResources().getColor(R.color.color_main));
     }
 
     @Override

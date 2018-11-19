@@ -62,10 +62,15 @@
     <string name="phone_number">Số điện thoại</string>
     <string name="username">Tên đăng nhập</string>
     <string name="password">Mật khẩu</string>
+    <string name="add_password">Thêm mật khẩu</string>
+    <string name="gender">Giới tính</string>
+    <string name="birthday">Ngày sinh</string>
+    <string name="account_society">Tài khoản mạng xã hội</string>
     <string name="confirmpassword">Nhập lại mật khẩu</string>
     <string name="forgetpassword">Quên mật khẩu ?</string>
     <string name="login">Đăng nhập</string>
     <string name="register">Đăng ký</string>
+    <string name="logout">Đăng xuất</string>
 
 
     // UserFragment
@@ -95,6 +100,8 @@
     <string name="delivering">Đang giao</string>
     <string name="return_product">Trả hàng</string>
 
+    <string name="edit_profile">Sửa hồ sơ</string>
+
 
 
     //sale
@@ -115,6 +122,23 @@
     <string name="see_centre_help">Xem trợ giúp</string>
     <string name="product">Sản phẩm</string>
     <string name="see_myshop">Xem shop của tôi</string>
+
+
+    //add product
+    <string name="name_product">Tên sản phẩm</string>
+    <string name="describe">Mô tả sản phẩm và #hashtag</string>
+    <string name="list">Danh mục</string>
+    <string name="trademark">Thương hiệu</string>
+    <string name="material">Chất liệu</string>
+    <string name="price">Giá</string>
+    <string name="setup_price">Thiết lập giá</string>
+    <string name="quantity">Số lượng</string>
+    <string name="setup_quantity">Thiết lập số lượng</string>
+    <string name="weight">Cân nặng</string>
+    <string name="status">Trạng thái</string>
+    <string name="finish">Hoàn thành</string>
+    <string name="name_type">Tên danh mục</string>
+
 
 
 </resources>

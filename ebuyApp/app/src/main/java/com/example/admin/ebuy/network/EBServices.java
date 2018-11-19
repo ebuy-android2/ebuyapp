@@ -1,9 +1,8 @@
 package com.example.admin.ebuy.network;
 
-import android.graphics.Bitmap;
-
 import com.example.admin.ebuy.model.request.LoginRequest;
 import com.example.admin.ebuy.model.request.RegisterRequest;
+import com.example.admin.ebuy.model.request.UpdateProfileRequest;
 import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
@@ -14,14 +13,13 @@ import com.example.admin.ebuy.model.respon.RegisterResponse;
 import com.example.admin.ebuy.model.respon.StarResponse;
 import com.example.admin.ebuy.model.respon.TypeProductResponse;
 import com.example.admin.ebuy.model.respon.TypeResponse;
+import com.example.admin.ebuy.model.respon.UpdateProfileResponse;
 import com.example.admin.ebuy.model.respon.UserResponse;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -43,6 +41,11 @@ public interface EBServices {
     @POST(PATH+"/customers/register")
     @Headers("Content-Type: application/json")
     Observable<RegisterResponse> customerRegister(@Body RegisterRequest registerRequest);
+
+    @Headers("Content-Type: application/json")
+    @POST(PATH+"/customers/{id}/update_profile")
+    Observable<UpdateProfileResponse> updateProfile(@Body UpdateProfileRequest updateProfileRequest);
+
 //
 //    @Multipart
 //    @Headers("Content-Type: application/json")

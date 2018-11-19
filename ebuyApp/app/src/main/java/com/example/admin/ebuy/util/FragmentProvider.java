@@ -7,8 +7,14 @@ import com.example.admin.ebuy.home.HomeFragment;
 import com.example.admin.ebuy.home.ProductDetailFragment;
 import com.example.admin.ebuy.home.TypeFragment;
 import com.example.admin.ebuy.home.TypeProductFragment;
+import com.example.admin.ebuy.list.ChooseListProductFragment;
+import com.example.admin.ebuy.list.ChooseListTypeFragment;
+import com.example.admin.ebuy.list.ChooseListTypeProductFragment;
 import com.example.admin.ebuy.list.ListProductFragment;
+import com.example.admin.ebuy.location.MapsFragment;
 import com.example.admin.ebuy.shopping.ShoppingFragment;
+import com.example.admin.ebuy.user.AddProductFragment;
+import com.example.admin.ebuy.user.EditProfileFragment;
 import com.example.admin.ebuy.user.LoginFragment;
 import com.example.admin.ebuy.user.RegisterFragment;
 import com.example.admin.ebuy.user.UserFragment;
@@ -51,6 +57,18 @@ public class FragmentProvider {
                 return new LoginFragment();
             case RegisterFragment.TAG:
                 return new RegisterFragment();
+            case MapsFragment.TAG:
+                return new MapsFragment();
+            case EditProfileFragment.TAG:
+                return new EditProfileFragment();
+            case ChooseListProductFragment.TAG:
+                return new ChooseListProductFragment();
+            case ChooseListTypeFragment.TAG:
+                return new ChooseListTypeFragment();
+            case ChooseListTypeProductFragment.TAG:
+                return new ChooseListTypeProductFragment();
+            case AddProductFragment.TAG:
+                return new AddProductFragment();
         }
 
         if (fragment != null)

@@ -43,31 +43,34 @@
                     android:text="@string/username"
                     android:textColor="@color/white"
                     android:typeface="serif" />
-                <com.example.admin.ebuy.view.EBCustomFont
-                    android:id="@+id/btnLogin"
-                    android:layout_width="@dimen/size_80"
-                    android:layout_height="@dimen/size_30"
-                    android:layout_below="@id/txtUserName"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/small"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginRight="@dimen/small"
-                    android:layout_toEndOf="@id/txtUserName"
-                    android:background="@drawable/bg_border_organ"
-                    android:gravity="center"
-                    android:text="@string/login"
-                    android:textColor="@color/white" />
-
-                <com.example.admin.ebuy.view.EBCustomFont
-                    android:id="@+id/btnRegister"
-                    android:layout_width="@dimen/size_80"
-                    android:layout_height="@dimen/size_30"
                     android:layout_below="@id/txtUserName"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/btnLogin"
-                    android:background="@drawable/bg_border_organ"
-                    android:gravity="center"
-                    android:text="@string/register"
-                    android:textColor="@color/white" />
+                    android:layout_marginTop="@dimen/small"
+                    >
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/btnLogin"
+                        android:layout_width="@dimen/size_80"
+                        android:layout_height="@dimen/size_30"
+                        android:background="@drawable/bg_border_organ"
+                        android:gravity="center"
+                        android:text="@string/login"
+                        android:textColor="@color/white" />
+
+                    <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/btnRegister"
+                        android:layout_width="@dimen/size_80"
+                        android:layout_height="@dimen/size_30"
+                        android:layout_marginLeft="@dimen/small"
+                        android:background="@drawable/bg_border_organ"
+                        android:gravity="center"
+                        android:text="@string/register"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
 
 
 
@@ -198,6 +201,7 @@
                         android:typeface="normal" />
 
                     <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/btnDelivering"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -486,6 +490,7 @@
                     android:orientation="horizontal">
 
                     <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/btnAddProductDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
                         android:drawableLeft="@drawable/add"

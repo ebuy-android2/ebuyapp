@@ -18,6 +18,13 @@
         android:theme="@style/AppTheme" >
         <!--android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">-->
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/>
+
         <activity android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -29,7 +36,7 @@
         </activity>
         <activity android:name=".MainActivity" >
         </activity>
-        <activity android:name=".user.activity.UserActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".user.activity.UserActivity"   android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".home.activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
 

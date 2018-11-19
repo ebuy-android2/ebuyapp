@@ -72,7 +72,7 @@ public class ProductDetailFragment extends BaseFragment{
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
-
+        ((BaseActivity)getActivity()).setVisibleFinish(false);
 
         mapped(view);
         Gson gson = new Gson();
@@ -109,7 +109,6 @@ public class ProductDetailFragment extends BaseFragment{
                     public void run() {
                         if (!CurrentUser.isLogin() || CurrentUser.getUserInfo().getAccessToken().isEmpty()) {
                             Navigator.getInstance().startFragment(getContext(), LoginFragment.TAG, UserActivity.class, null);
-                            getActivity().finish();
                         }
                         else {
                             Bundle bundle;

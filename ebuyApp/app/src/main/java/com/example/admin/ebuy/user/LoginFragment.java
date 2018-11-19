@@ -48,6 +48,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
+        ((BaseActivity)getActivity()).setTitle(true, getResources().getString(R.string.login));
+        ((BaseActivity)getActivity()).setVisibleBack(true);
+        ((BaseActivity)getActivity()).setVisibleFinish(false);
+
         txtUserName = (EditText)view.findViewById(R.id.txtUserName);
         txtPassword = (EditText)view.findViewById(R.id.txtPassword);
         btnLogin = (Button)view.findViewById(R.id.btnLogin);
@@ -157,7 +161,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
 //                                    EBCustomFont btnRegister = (EBCustomFont)viewGroup.findViewById(R.id.btnRegister);
 //                                    btnRegister.setVisibility(View.INVISIBLE);
 
-                                   getChildFragmentManager().popBackStack();
+                                   getActivity().finish();
 
 //                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
 //                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);

@@ -48,6 +48,8 @@ public class TypeProductFragment extends BaseFragment {
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
+        ((BaseActivity)getActivity()).setVisibleFinish(false);
+
         savedInstanceState = getActivity().getIntent().getExtras();
         int data= savedInstanceState.getInt("id");
         String name = savedInstanceState.getString("name");

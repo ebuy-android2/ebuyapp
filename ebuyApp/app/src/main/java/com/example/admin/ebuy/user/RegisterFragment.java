@@ -46,6 +46,10 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
+        ((BaseActivity)getActivity()).setTitle(true, getResources().getString(R.string.register));
+        ((BaseActivity)getActivity()).setVisibleBack(true);
+        ((BaseActivity)getActivity()).setVisibleFinish(false);
+
         txtPhonenumber = (EditText)view.findViewById(R.id.txtPhonenumber);
         txtPassword = (EditText)view.findViewById(R.id.txtPassword);
         txtConfirmPassword = (EditText)view.findViewById(R.id.txtConfirmPassword);
@@ -144,7 +148,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                 } else {
                     CurrentUser.setUserInfo(userResponse.getUser());
                     CurrentUser.saveUserInfo(userResponse.getUser());
-                    getChildFragmentManager().popBackStack();
+                    getActivity().finish();
 //                                    Navigator.getInstance().startFragment();
 //                                    getActivity().finish();
                 }

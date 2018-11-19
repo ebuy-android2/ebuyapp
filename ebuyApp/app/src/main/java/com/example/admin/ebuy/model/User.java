@@ -20,7 +20,7 @@ public class User {
     @JsonField(name = "token_type")
     private String token;
     @JsonField(name = "avatar")
-    private String avatar;
+    private String avatar="";
     @JsonField(name = "access_token")
     private String accessToken="";
 

@@ -20,6 +20,11 @@ public class PrefUtils {
 
     public static final String CACHE_CONFIG = "CACHE_CONFIG";
 
+    public static final String ID_LIST = "ID_LIST";
+    public static final String ID_TYPE = "ID_TYPE";
+    public static final String ID_TYPE_PRODUCT = "ID_TYPE_PRODUCT";
+
+
 
     public static void savePreferences(Context activity, String key, String value) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());

@@ -20,7 +20,7 @@ import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.FragmentProvider;
 import com.example.admin.ebuy.util.Navigator;
-
+import com.example.admin.ebuy.view.EBCustomFont;
 
 
 /**
@@ -129,6 +129,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         if (findViewById(R.id.txtTitleHeader) != null) {
             ((TextView) findViewById(R.id.txtTitleHeader)).setText(title);
             ((TextView) findViewById(R.id.txtTitleHeader)).setAllCaps(allCap);
+        }
+    }
+    public void setVisibleFinish(boolean allCap){
+        if (findViewById(R.id.txtFinish)!=null){
+            if(allCap ==true){
+                ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.VISIBLE);
+            }
+            else
+                ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.GONE);
         }
     }
     public void setVisibleBack(boolean b)

@@ -98,7 +98,7 @@ public class HomeFragment extends BaseFragment implements ObservableScrollViewCa
 
                     @Override
                     public void onError(Throwable e) {
-
+                       onError(e);
                     }
 
                     @Override

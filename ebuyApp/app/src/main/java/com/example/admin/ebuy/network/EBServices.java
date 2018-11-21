@@ -1,12 +1,16 @@
 package com.example.admin.ebuy.network;
 
+import com.example.admin.ebuy.model.request.AddOrderDetailRequest;
+import com.example.admin.ebuy.model.request.CreateOrderRequest;
 import com.example.admin.ebuy.model.request.LoginRequest;
 import com.example.admin.ebuy.model.request.RegisterRequest;
 import com.example.admin.ebuy.model.request.UpdateProfileRequest;
+import com.example.admin.ebuy.model.respon.BaseResponse;
 import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
 import com.example.admin.ebuy.model.respon.LikeResponse;
+import com.example.admin.ebuy.model.respon.OrderDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
 import com.example.admin.ebuy.model.respon.RegisterResponse;
@@ -20,6 +24,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -41,6 +46,8 @@ public interface EBServices {
     @POST(PATH+"/customers/register")
     @Headers("Content-Type: application/json")
     Observable<RegisterResponse> customerRegister(@Body RegisterRequest registerRequest);
+
+
 
     @Headers("Content-Type: application/json")
     @POST(PATH+"/customers/{id}/update_profile")
@@ -79,5 +86,18 @@ public interface EBServices {
     @GET(PATH+"/feedbacks/getCountLike")
     Observable<LikeResponse> getLike(@Query("id_product_detail")int id);
 
+    @GET(PATH+"/productdetail/getProductDetailOfCustomer")
+    Observable<ProductDetailResponse> getProductDetailOfCustomer(@Query("id_customer")int id);
+
+    @GET(PATH+"/customers/{id}/getAllOrderDetail")
+    Observable<OrderDetailResponse> getOrderDetail(@Path("id") int id);
+
+    @Headers("Content-Type: application/json")
+    @POST(PATH+"/customers/{id}/add_orderDetail")
+    Observable<BaseResponse> addOrderDetail(@Path("id")int id, @Body AddOrderDetailRequest addOrderDetailRequest);
+
+    @Headers("Content-Type: application/json")
+    @POST(PATH+"/customers/{id}/create_order")
+    Observable<BaseResponse> createOrder(@Path("id")int id, @Body CreateOrderRequest createOrderRequest);
 
 }

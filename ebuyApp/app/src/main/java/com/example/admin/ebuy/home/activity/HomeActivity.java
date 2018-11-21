@@ -70,6 +70,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnHome:

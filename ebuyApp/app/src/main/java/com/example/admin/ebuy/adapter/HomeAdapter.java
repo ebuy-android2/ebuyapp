@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.home.HomeFragment;
 import com.example.admin.ebuy.list.ListProductFragment;
+import com.example.admin.ebuy.model.CurrentUser;
 import com.example.admin.ebuy.shopping.ShoppingFragment;
+import com.example.admin.ebuy.user.LoginFragment;
 import com.example.admin.ebuy.user.UserFragment;
 
 
@@ -35,7 +37,9 @@ public class HomeAdapter extends FragmentPagerAdapter {
                 return new ListProductFragment();
 
             case 2:
-               return new ShoppingFragment();
+                    return new ShoppingFragment();
+
+
 
             case 3:
                 return new UserFragment();

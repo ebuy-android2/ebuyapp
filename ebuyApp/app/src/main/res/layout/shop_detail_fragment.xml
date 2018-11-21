@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageCover"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cover" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAvatarShop"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_normal"
+            app:civ_border_color="@color/color_main"
+            app:civ_border_width="1dp" />
+
+        <com.example.admin.ebuy.view.EBCustomFont
+            android:id="@+id/txtAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@+id/imgAvatarShop"
+            android:layout_weight="1"
+
+            android:paddingLeft="@dimen/padding_small"
+            android:text="Địa chỉ"
+            android:textSize="@dimen/font_big" />
+
+        <com.example.admin.ebuy.view.EBCustomFont
+            android:id="@+id/txtNameShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtAddress"
+            android:layout_marginBottom="-100dp"
+            android:layout_toEndOf="@+id/imgAvatarShop"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:paddingLeft="@dimen/padding_small"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_big" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small"
+        android:text="Sản Phẩm"
+        android:textSize="@dimen/font_large" />
+
+    <com.example.admin.ebuy.view.MyGridview
+        android:id="@+id/gridListProduct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2">
+
+    </com.example.admin.ebuy.view.MyGridview>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

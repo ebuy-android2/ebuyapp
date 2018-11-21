@@ -141,7 +141,7 @@ public class ShoppingFragment extends BaseFragment implements View.OnClickListen
         {
            orderDetailRequests.add(new OrderDetailRequest(sparseIntArray.keyAt(i))) ;
         }
-        Toast.makeText(getContext(), orderDetailRequests.toString(), Toast.LENGTH_SHORT).show();
+        
         createOrderRequest.setAddress("abc");
         createOrderRequest.setId_city(1);
         createOrderRequest.setId_district(1);

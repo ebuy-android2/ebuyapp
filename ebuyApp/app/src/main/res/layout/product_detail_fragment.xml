@@ -406,4 +406,14 @@
             android:text="Mua"
             android:textSize="@dimen/font_large" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btnNavigation"
+        android:layout_width="@dimen/size_50"
+        android:layout_height="@dimen/size_50"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/size_80"
+        android:layout_marginEnd="@dimen/size_20"
+        android:src="@drawable/navigation" />
 </RelativeLayout>

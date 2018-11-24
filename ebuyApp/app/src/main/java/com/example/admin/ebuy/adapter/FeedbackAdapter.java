@@ -12,8 +12,11 @@ import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.model.FeedBackData;
 import com.example.admin.ebuy.view.EBCustomFont;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.ViewHolder> {
     BaseFragment baseFragment;
@@ -50,17 +53,24 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackAdapter.ViewHo
 
         RatingBar ratingBar;
         EBCustomFont txtNameShop,txtComment;
+        CircleImageView imgAvatarShop;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ratingBar = (RatingBar)itemView.findViewById(R.id.ratingBar);
             txtComment = (EBCustomFont)itemView.findViewById(R.id.txtComment);
             txtNameShop = (EBCustomFont)itemView.findViewById(R.id.txtNameShop);
+            imgAvatarShop = (CircleImageView)itemView.findViewById(R.id.imgAvatarShop);
         }
         public void bind(FeedBackData feedBackData)
         {
             ratingBar.setRating(feedBackData.getFeedback());
             txtNameShop.setText(feedBackData.getName());
             txtComment.setText(feedBackData.getComment());
+            Picasso.with(baseFragment.getContext())
+                    .load(feedBackData.getAvatar())
+                    .placeholder(R.mipmap.logo)
+                    .into(imgAvatarShop);
+
         }
     }
 }

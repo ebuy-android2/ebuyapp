@@ -161,7 +161,10 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
 
                 break;
             case R.id.btnDelivering:
-                Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class, null);
+                Bundle bundle = new Bundle();
+                bundle.putString("LocationShop","Trần Trọng Kim, Phường 22, Bình Thạnh, Hồ Chí Minh, Việt Nam");
+                bundle.putInt("Type", 2);
+                Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class, bundle);
                 break;
             case R.id.btnAddProductDetail:
                 Navigator.getInstance().startFragment(getContext(), AddProductFragment.TAG, UserActivity.class, null);

@@ -6,11 +6,17 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +25,9 @@ import android.widget.Toast;
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.base.BaseFragment;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,6 +38,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,13 +55,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.content.Context.LOCATION_SERVICE;
 
-public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
 
-    public final static String TAG="MapsFragment";
+public class MapsFragment extends BaseFragment implements OnMapReadyCallback {
+
+    public final static String TAG = "MapsFragment";
     private GoogleMap mMap;
     private static final int LOCATION_REQUEST = 500;
     List<LatLng> listPoints;
+    String location1;
+    String currentLocation;
+    int type;
+    LatLng sydney3 = null;
+    LatLng sydney2 = null;
+    LatLng sydney1 = null;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    LocationListener locationListener;
+    LocationManager locationManager;
+
     @Override
     protected int getLayoutResourceId() {
         return R.layout.maps_fragment;
@@ -58,16 +82,41 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment)this.getChildFragmentManager()
-                .findFragmentById(R.id.map);
-        Toast.makeText(getContext(), "oke triệu!", Toast.LENGTH_SHORT).show();
-        Log.e("triệu", "1");
-        mapFragment.getMapAsync(this);
-        listPoints = new ArrayList<>();
+        ((BaseActivity) getActivity()).setVisibleFinish(false);
+        savedInstanceState = getActivity().getIntent().getExtras();
 
-        ((BaseActivity)getActivity()).setTitle(true, getResources().getString(R.string.delivering));
+        type = savedInstanceState.getInt("Type");
+        location1 = savedInstanceState.getString("LocationShop");
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.map);
+
+//        locationManager = (LocationManager) getActivity().getSystemService(
+//                Context.LOCATION_SERVICE);
+        mapFragment.getMapAsync(this);
+
+        listPoints = new ArrayList<>();
+        ((BaseActivity) getActivity()).setTitle(true, getResources().getString(R.string.delivering));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        listPoints.clear();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        listPoints.clear();
+        mMap.clear();
     }
 
     @Override
@@ -75,24 +124,43 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
         return TAG;
     }
 
+
+
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         Log.e("triệu", "2");
-        String address1 = "Trần Trọng Kim, Phường 22, Bình Thạnh, Hồ Chí Minh, Việt Nam";
-        LatLng sydney1 = getLocationFromAddress(getContext(),address1);
-        String address2 = "72 Lê Thánh Tôn, Bến Nghé, Quận 1, Hồ Chí Minh";
-        LatLng sydney2 = getLocationFromAddress(getContext(),address2);
-
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
             return;
         }
         mMap.setMyLocationEnabled(true);
+        LocationManager locationManager = (LocationManager)
+                getContext().getSystemService(Context.LOCATION_SERVICE);
+        Location myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (myLocation == null) {
+            Criteria criteria = new Criteria();
+            criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+            String provider = locationManager.getBestProvider(criteria, true);
+            myLocation = locationManager.getLastKnownLocation(provider);
+
+        }
+        sydney3 = new LatLng(myLocation.getLatitude(),myLocation.getLongitude());
 
 
-        // save first point select
+
+//        String address1 = "Trần Trọng Kim, Phường 22, Bình Thạnh, Hồ Chí Minh, Việt Nam";
+        String address1 = location1;
+        sydney1 = getLocationFromAddress(getContext(),address1);
+        if(type==1){
+            sydney2 = sydney3;
+        }
+        else {
+            String address2 = "227 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, Hồ Chí Minh";
+            sydney2 = getLocationFromAddress(getContext(),address2);
+        }
+
         listPoints.add(sydney1);
         listPoints.add(sydney2);
 
@@ -103,16 +171,28 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
             markerOptions.position(latLng);
             i++;
             if(i==1){
-                BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.car);
-                markerOptions.icon(icon);
-                // markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                Log.e("triệu", "3");
-            }
-            else{
-                BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.girl);
-                markerOptions.icon(icon);
+                if (type==1){
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.iconshop);
+                    markerOptions.icon(icon);
+                }
+                else {
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.girl);
+                    markerOptions.icon(icon);
+                }
                 //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                Log.e("triệu", "4");
+                Log.e("triệu", "3");
+            }else {
+                if (type==1){
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.girl);
+                    markerOptions.icon(icon);
+                }
+                else {
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.car);
+                    markerOptions.icon(icon);
+                }
+
+                // markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                Log.e("triệu", "5");
             }
             mMap.addMarker(markerOptions);
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15), new GoogleMap.CancelableCallback() {
@@ -127,7 +207,8 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
                 }
             });
         }
-        String url = getRequestUrl(listPoints.get(0), listPoints.get(1));
+         String url = getRequestUrl(listPoints.get(0), listPoints.get(1));
+
         TaskRequestDirections taskRequestDirections = new TaskRequestDirections();
         taskRequestDirections.execute(url);
 
@@ -146,7 +227,7 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
         //Output format
         String output = "json";
         //Create url to request
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + param+"&key=AIzaSyCCt0tU4RWlF-73i_N3VBHDzBrvu9fLi6M";
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + param+"&key=AIzaSyAqTCmGrK4J42n7pDMy1yAl9JYNiDTdeaQ";
 
         return url;
     }
@@ -193,6 +274,10 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback{
                 break;
         }
     }
+
+
+
+
     public class TaskRequestDirections extends AsyncTask<String, Void, String> {
 
         @Override

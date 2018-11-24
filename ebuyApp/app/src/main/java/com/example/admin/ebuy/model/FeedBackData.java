@@ -9,6 +9,8 @@ public class FeedBackData {
     private int id;
     @JsonField(name = "name_customer")
     private String name;
+    @JsonField(name = "avatar")
+    private String avatar;
     @JsonField(name = "id_product_detail")
     private int id_product;
     @JsonField(name = "express")
@@ -32,6 +34,14 @@ public class FeedBackData {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public int getId_product() {

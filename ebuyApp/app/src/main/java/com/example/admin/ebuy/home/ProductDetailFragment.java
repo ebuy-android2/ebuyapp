@@ -27,6 +27,7 @@ import com.example.admin.ebuy.adapter.ListProductAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.home.activity.HomeActivity;
+import com.example.admin.ebuy.location.MapsFragment;
 import com.example.admin.ebuy.model.CurrentUser;
 import com.example.admin.ebuy.model.ProductDetailData;
 import com.example.admin.ebuy.model.request.AddOrderDetailRequest;
@@ -59,7 +60,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     EBCustomFont txtpricePro, txtDanhmuc, txtThuonhieu, txtChatlieu, txtGuitu, txtDetailPro, txtNumLike, txtNumStar;
     TextView txtNamePro, txtNameShop, txtAddressShop, txtBuynow;
     CircleImageView imgAvatarShop;
-    ImageView imgview;
+    ImageView imgview, imgNagavition;
     FeedbackAdapter feedbackAdapter;
     RecyclerView recyclerViewCommet, recyclerViewPro;
     LinearLayoutManager linearLayoutManager, linearLayoutManagerHorizontal;
@@ -71,7 +72,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     int SWIPE_VELOCITY = 70;
     RatingBar ratingBar;
     ProductDetailData productDetailData;
-
+    String address="";
     @Override
     protected int getLayoutResourceId() {
         return R.layout.product_detail_fragment;
@@ -117,6 +118,21 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         getFeedbackByIDProduct(productDetailData.getId_product());
         getListProductDetailByTypeProduct(productDetailData.getId_type());
 
+        imgNagavition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(address.isEmpty()){
+                    Toast.makeText(getContext(), "Shop chưa cập nhật địa chỉ", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("LocationShop",txtAddressShop.getText().toString());
+                    bundle.putInt("Type", 1);
+                    Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class,bundle);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -126,6 +142,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
     private void mapped(View view) {
         imgview = (ImageView) view.findViewById(R.id.imgview);
+        imgNagavition = (ImageView) view.findViewById(R.id.btnNavigation);
         txtChatlieu = (EBCustomFont) view.findViewById(R.id.txtChatlieu);
         txtDanhmuc = (EBCustomFont) view.findViewById(R.id.txtDanhmuc);
         txtDetailPro = (EBCustomFont) view.findViewById(R.id.txtDetailPro);
@@ -213,6 +230,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
                     @Override
                     public void onNext(CustomerRespose customerRespose) {
+                        address = customerRespose.getData().getAddress();
                         txtAddressShop.setText(customerRespose.getData().getAddress());
                         txtNameShop.setText(customerRespose.getData().getName());
                         Picasso.with(getContext())

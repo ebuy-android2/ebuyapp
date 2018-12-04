@@ -13,6 +13,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -29,6 +30,7 @@ import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.home.activity.HomeActivity;
 import com.example.admin.ebuy.location.MapsFragment;
 import com.example.admin.ebuy.model.CurrentUser;
+import com.example.admin.ebuy.model.CustomerData;
 import com.example.admin.ebuy.model.ProductDetailData;
 import com.example.admin.ebuy.model.request.AddOrderDetailRequest;
 import com.example.admin.ebuy.model.request.UpdateProfileRequest;
@@ -36,6 +38,7 @@ import com.example.admin.ebuy.model.respon.BaseResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
+import com.example.admin.ebuy.model.respon.TypeLikeResponse;
 import com.example.admin.ebuy.model.respon.UpdateProfileResponse;
 import com.example.admin.ebuy.network.EBServices;
 import com.example.admin.ebuy.network.ServiceFactory;
@@ -63,6 +66,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     ImageView imgview, imgNagavition;
     FeedbackAdapter feedbackAdapter;
     RecyclerView recyclerViewCommet, recyclerViewPro;
+    Button btnSeeShop;
     LinearLayoutManager linearLayoutManager, linearLayoutManagerHorizontal;
 
     ListProductAdapter listProductAdapter;
@@ -73,6 +77,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     RatingBar ratingBar;
     ProductDetailData productDetailData;
     String address="";
+    CustomerData customerData;
     @Override
     protected int getLayoutResourceId() {
         return R.layout.product_detail_fragment;
@@ -118,21 +123,11 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         getFeedbackByIDProduct(productDetailData.getId_product());
         getListProductDetailByTypeProduct(productDetailData.getId_type());
 
-        imgNagavition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(address.isEmpty()){
-                    Toast.makeText(getContext(), "Shop chưa cập nhật địa chỉ", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("LocationShop",txtAddressShop.getText().toString());
-                    bundle.putString("Title",getResources().getString(R.string.location_shop));
-                    bundle.putInt("Type", 1);
-                    Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class,bundle);
-                }
-            }
-        });
+        if (isLogin())
+        {
+            getTypeLike();
+        }
+
     }
 
     @Override
@@ -161,8 +156,12 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
         txtBuynow = (TextView) view.findViewById(R.id.txtBuynow);
         addProduct = (LinearLayout) view.findViewById(R.id.addProduct);
+        btnSeeShop = (Button)view.findViewById(R.id.seeShop);
         addProduct.setOnClickListener(this);
         txtBuynow.setOnClickListener(this);
+        txtNumLike.setOnClickListener(this);
+        imgNagavition.setOnClickListener(this);
+        btnSeeShop.setOnClickListener(this);
 
     }
 
@@ -195,7 +194,32 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                 }
                 break;
             case R.id.addProduct:
-                addOrderDetail();
+                if (!CurrentUser.isLogin() || CurrentUser.getUserInfo().getAccessToken().isEmpty()) {
+                    Navigator.getInstance().startFragment(getContext(), LoginFragment.TAG, UserActivity.class, null);
+                } else {
+                addOrderDetail();}
+                break;
+            case R.id.txtNumLike:
+                postLike();
+                break;
+            case R.id.btnNavigation:
+                if(address.isEmpty()){
+                    Toast.makeText(getContext(), "Shop chưa cập nhật địa chỉ", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("LocationShop",txtAddressShop.getText().toString());
+                    bundle.putInt("Type", 1);
+                    Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class,bundle);
+                }
+                break;
+
+            case R.id.seeShop:
+                Bundle bundle = new Bundle();
+                Gson gson = new Gson();
+                String data = gson.toJson(customerData);
+                bundle.putString("data",data);
+                Navigator.getInstance().startFragment(getContext(), ShopDetailFragment.TAG, SupportActivity.class,bundle);
                 break;
 
         }
@@ -230,6 +254,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
                     @Override
                     public void onNext(CustomerRespose customerRespose) {
+                        customerData = customerRespose.getData();
                         address = customerRespose.getData().getAddress();
                         txtAddressShop.setText(customerRespose.getData().getAddress());
                         txtNameShop.setText(customerRespose.getData().getName());
@@ -333,4 +358,103 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
 
     }
+    private void getTypeLike() {
+        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+                .getTypeLike(CurrentUser.getUserInfo().getId(),productDetailData.getId_detail() )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TypeLikeResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(getContext(), "error ", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onNext(TypeLikeResponse typeLikeResponse) {
+
+                        if(typeLikeResponse.getData().getType()==1) {
+                            txtNumLike.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_liked, 0, 0, 0);
+                            }
+
+                    }
+
+                });
+    }
+    private boolean isLogin()
+    {
+        if(CurrentUser.isLogin() || !CurrentUser.getUserInfo().getAccessToken().isEmpty())
+        {
+            return true;
+        }
+        return false;
+    }
+    private void postLike()
+    {
+
+        if(isLogin())
+        {
+            ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+                    .getTypeLike(CurrentUser.getUserInfo().getId(),productDetailData.getId_detail() )
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<TypeLikeResponse>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Toast.makeText(getContext(), "error ", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onNext(final TypeLikeResponse typeLikeResponse) {
+                            int stt;
+                            if(typeLikeResponse.getData().getType()==1)
+                                stt=0;
+                            else stt=1;
+                            ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+                                    .postLike(CurrentUser.getUserInfo().getId(), productDetailData.getId_detail(),stt)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new Observer<BaseResponse>() {
+                                        @Override
+                                        public void onCompleted() {
+
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable e) {
+
+                                        }
+
+                                        @Override
+                                        public void onNext(BaseResponse baseResponse) {
+                                            Toast.makeText(getContext(), "type"+typeLikeResponse.getData().getType(), Toast.LENGTH_SHORT).show();
+                                            if (typeLikeResponse.getData().getType()==1)
+                                            {
+                                                txtNumLike.setText((productDetailData.getNumLike())+"");
+                                                txtNumLike.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_like,0,0,0);
+                                            }
+                                            else {
+                                                txtNumLike.setText((productDetailData.getNumLike()+1)+"");
+                                                txtNumLike.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_liked,0,0,0);
+                                            }
+
+
+                                        }
+                                    });
+                        }
+
+                    });
+
+        }
+    }
+
 }

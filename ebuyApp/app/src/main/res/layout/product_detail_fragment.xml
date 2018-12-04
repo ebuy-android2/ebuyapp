@@ -53,7 +53,7 @@
                     android:layout_gravity="left"
                     android:textColor="@color/color_main"
                     android:textSize="@dimen/font_big" />
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_small"
@@ -62,29 +62,39 @@
 
                     <com.example.admin.ebuy.view.EBCustomFont
                         android:id="@+id/txtNumLike"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:gravity="center"
                         android:padding="@dimen/padding_smallX"
                         android:text="1"
                         android:textSize="@dimen/font_small"
                         android:drawableLeft="@drawable/ic_like"
                         android:drawablePadding="@dimen/padding_smallXX"/>
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/MyRatingBar"
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:rating="3"
-                        />
-                    <com.example.admin.ebuy.view.EBCustomFont
-                        android:id="@+id/txtNumStar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:textSize="@dimen/font_small"
-                        android:padding="@dimen/padding_smallXX"/>
-                </LinearLayout>
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center">
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/MyRatingBar"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:rating="3" />
+
+                        <com.example.admin.ebuy.view.EBCustomFont
+                            android:id="@+id/txtNumStar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_smallXX"
+                            android:text="1"
+                            android:textSize="@dimen/font_small" />
+                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -205,7 +215,7 @@
                                 android:layout_marginLeft="@dimen/margin_small"
                                 android:gravity="left"
 
-                                android:text="abc"
+                                android:text="sgshfgg dg df hgfjhljkjmmhmjhmkuyky"
                                 android:textSize="@dimen/font_big" />
 
 

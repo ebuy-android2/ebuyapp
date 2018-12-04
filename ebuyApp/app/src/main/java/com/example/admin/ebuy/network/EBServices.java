@@ -15,6 +15,8 @@ import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
 import com.example.admin.ebuy.model.respon.RegisterResponse;
 import com.example.admin.ebuy.model.respon.StarResponse;
+import com.example.admin.ebuy.model.respon.StoreResponse;
+import com.example.admin.ebuy.model.respon.TypeLikeResponse;
 import com.example.admin.ebuy.model.respon.TypeProductResponse;
 import com.example.admin.ebuy.model.respon.TypeResponse;
 import com.example.admin.ebuy.model.respon.UpdateProfileResponse;
@@ -99,5 +101,16 @@ public interface EBServices {
     @Headers("Content-Type: application/json")
     @POST(PATH+"/customers/{id}/create_order")
     Observable<BaseResponse> createOrder(@Path("id")int id, @Body CreateOrderRequest createOrderRequest);
+
+    @Headers("Content-Type: application/json")
+    @POST(PATH+"/customers/{id}/addFeedBackExpress")
+    Observable<BaseResponse> postLike(@Path("id") int id,@Query("id_product_detail") int id_pro_detail,@Query("express") int stt);
+
+
+    @GET(PATH+"/customers/{id}/getLike")
+    Observable<TypeLikeResponse> getTypeLike(@Path("id") int id, @Query("id_product_detail") int id_pro_detail);
+
+    @GET(PATH+"/customers/getall")
+    Observable<StoreResponse> getAllCustomer();
 
 }

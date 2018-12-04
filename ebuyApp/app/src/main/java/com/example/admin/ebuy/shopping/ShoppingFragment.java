@@ -78,7 +78,6 @@ public class ShoppingFragment extends BaseFragment implements View.OnClickListen
 
         }
         else {
-            Toast.makeText(getContext(), "Vui lòng đăng nhập!!", Toast.LENGTH_SHORT).show();
             orderDetailAdapter.setListOrder(new ArrayList<OrderDetailData>());
         }
     }
@@ -141,7 +140,7 @@ public class ShoppingFragment extends BaseFragment implements View.OnClickListen
         {
            orderDetailRequests.add(new OrderDetailRequest(sparseIntArray.keyAt(i))) ;
         }
-        
+
         createOrderRequest.setAddress("abc");
         createOrderRequest.setId_city(1);
         createOrderRequest.setId_district(1);

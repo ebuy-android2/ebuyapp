@@ -14,6 +14,7 @@ import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.model.ProductData;
+import com.example.admin.ebuy.model.StoreData;
 import com.example.admin.ebuy.model.TypeData;
 import com.example.admin.ebuy.model.TypeProductData;
 import com.example.admin.ebuy.home.TypeFragment;
@@ -29,6 +30,11 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
     private ArrayList<ProductData> listCategoryProduct;
     private ArrayList<TypeData> listType;
     private ArrayList<TypeProductData> listTypeProduct;
+    private ArrayList<StoreData> listStore;
+
+    public void setListStore(ArrayList<StoreData> listStore) {
+        this.listStore = listStore;
+    }
 
     public void setListTypeProduct(ArrayList<TypeProductData> listTypeProduct) {
         this.listTypeProduct = listTypeProduct;
@@ -85,6 +91,10 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
         {
             viewHolder.bindView(listTypeProduct.get(i));
         }
+        else if(listStore!=null)
+        {
+            viewHolder.bindView(listStore.get(i));
+        }
 
 
     }
@@ -102,6 +112,10 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
         else if(listTypeProduct!=null)
         {
             return listTypeProduct.size();
+        }
+        else if(listStore!=null)
+        {
+            return listStore.size();
         }
         return 0;
 
@@ -166,6 +180,17 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
             imageView.setVisibility(View.GONE);
             textView.setText(typeProductData.getName());
             textView.setBackgroundResource(R.drawable.bg_border_organ);
+
+
+        }
+        public void bindView(StoreData storeData) {
+
+
+            Picasso.with(baseFragment.getContext())
+                    .load(storeData.getAvatar())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(imageView);
+            textView.setText(storeData.getName());
 
 
         }

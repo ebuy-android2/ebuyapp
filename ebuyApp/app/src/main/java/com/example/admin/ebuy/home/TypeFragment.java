@@ -125,8 +125,8 @@ public class TypeFragment extends BaseFragment {
                         recyclerViewProduct.setAdapter(listCategoryProductAdapter);
                 }
 
-    });
-}
+        });
+    }
     private void getListProductDetailByType(int data)
     {
         ServiceFactory.createRetrofitService(EBServices.class,AppConfig.getApiEndpoint())

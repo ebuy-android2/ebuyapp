@@ -33,24 +33,10 @@
         android:text="@string/finish"
         android:textColor="@color/white"
         android:textStyle="normal"
-        android:textSize="@dimen/font_largeX"
+        android:textSize="@dimen/font_big"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/margin_small"
         />
-    <com.example.admin.ebuy.view.EBCustomFont
-        android:id="@+id/txtFinished"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish"
-        android:textStyle="normal"
-        android:textColor="@color/yellow"
-        android:textSize="@dimen/font_largeX"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/margin_small"
-        android:visibility="gone"
-        />
-
 
 </RelativeLayout>

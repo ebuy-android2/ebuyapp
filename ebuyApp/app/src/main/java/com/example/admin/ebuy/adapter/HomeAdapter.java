@@ -37,9 +37,7 @@ public class HomeAdapter extends FragmentPagerAdapter {
                 return new ListProductFragment();
 
             case 2:
-                    return new ShoppingFragment();
-
-
+                return new ShoppingFragment();
 
             case 3:
                 return new UserFragment();

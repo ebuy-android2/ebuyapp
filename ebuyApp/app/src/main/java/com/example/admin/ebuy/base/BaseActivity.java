@@ -131,9 +131,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             ((TextView) findViewById(R.id.txtTitleHeader)).setAllCaps(allCap);
         }
     }
-    public void setVisibleFinish(boolean allCap){
+    public void setVisibleFinish(boolean b){
         if (findViewById(R.id.txtFinish)!=null){
-            if(allCap ==true){
+            if(b ==true){
                 ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.VISIBLE);
             }
             else

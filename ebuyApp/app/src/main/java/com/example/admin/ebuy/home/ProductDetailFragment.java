@@ -127,12 +127,12 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                 else {
                     Bundle bundle = new Bundle();
                     bundle.putString("LocationShop",txtAddressShop.getText().toString());
+                    bundle.putString("Title",getResources().getString(R.string.location_shop));
                     bundle.putInt("Type", 1);
                     Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class,bundle);
                 }
             }
         });
-
     }
 
     @Override

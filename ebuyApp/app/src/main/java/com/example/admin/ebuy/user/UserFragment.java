@@ -98,7 +98,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                 if (CurrentUser.isLogin() || !CurrentUser.getUserInfo().getAccessToken().isEmpty()) {
                     btnLogin.setVisibility(View.INVISIBLE);
                     btnRegister.setVisibility(View.INVISIBLE);
-                    if (!CurrentUser.getUserInfo().getAvatar().isEmpty()){
+                    if (CurrentUser.getUserInfo().getAvatar()!=null&&!CurrentUser.getUserInfo().getAvatar().isEmpty()){
                         Picasso.with(getContext())
                                 .load(CurrentUser.getUserInfo().getAvatar())
                                 .placeholder(R.drawable.logo)
@@ -163,6 +163,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
             case R.id.btnDelivering:
                 Bundle bundle = new Bundle();
                 bundle.putString("LocationShop","Trần Trọng Kim, Phường 22, Bình Thạnh, Hồ Chí Minh, Việt Nam");
+                bundle.putString("Title",getResources().getString(R.string.delivering));
                 bundle.putInt("Type", 2);
                 Navigator.getInstance().startFragment(getContext(), MapsFragment.TAG, SupportActivity.class, bundle);
                 break;

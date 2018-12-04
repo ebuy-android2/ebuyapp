@@ -28,9 +28,9 @@ import java.util.ArrayList;
 public class ChooseListAdpater extends RecyclerView.Adapter<ChooseListAdpater.ViewHolder> {
 
     private BaseFragment baseFragment;
-    private ArrayList<ProductData> listCategoryProduct;
-    private ArrayList<TypeData> listType;
-    private ArrayList<TypeProductData> listTypeProduct;
+    private ArrayList<ProductData> listCategoryProduct = new ArrayList<>();
+    private ArrayList<TypeData> listType = new ArrayList<>();
+    private ArrayList<TypeProductData> listTypeProduct = new ArrayList<>();
 
     public ChooseListAdpater(BaseFragment baseFragment) {
         this.baseFragment = baseFragment;
@@ -41,8 +41,11 @@ public class ChooseListAdpater extends RecyclerView.Adapter<ChooseListAdpater.Vi
     }
 
     public void setListCategoryProduct(ArrayList<ProductData> listCategoryProduct) {
+        listType.clear();
+        listTypeProduct.clear();
         this.listCategoryProduct = listCategoryProduct;
         notifyDataSetChanged();
+        setHasStableIds(true);
     }
 
     public ArrayList<TypeData> getListType() {
@@ -50,8 +53,11 @@ public class ChooseListAdpater extends RecyclerView.Adapter<ChooseListAdpater.Vi
     }
 
     public void setListType(ArrayList<TypeData> listType) {
+        listCategoryProduct.clear();
+        listTypeProduct.clear();
         this.listType = listType;
         notifyDataSetChanged();
+        setHasStableIds(true);
     }
 
     public ArrayList<TypeProductData> getListTypeProduct() {
@@ -59,8 +65,11 @@ public class ChooseListAdpater extends RecyclerView.Adapter<ChooseListAdpater.Vi
     }
 
     public void setListTypeProduct(ArrayList<TypeProductData> listTypeProduct) {
+        listCategoryProduct.clear();
+        listType.clear();
         this.listTypeProduct = listTypeProduct;
         notifyDataSetChanged();
+        setHasStableIds(true);
     }
 
     @NonNull
@@ -74,15 +83,15 @@ public class ChooseListAdpater extends RecyclerView.Adapter<ChooseListAdpater.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        if(listCategoryProduct!=null)
+        if(listCategoryProduct != null)
         {
             viewHolder.bindView(listCategoryProduct.get(i));
         }
-        else if (listType!=null)
+        else if (listType != null)
         {
             viewHolder.bindView(listType.get(i));
         }
-        else if(listTypeProduct!=null)
+        else if(listTypeProduct != null)
         {
             viewHolder.bindView(listTypeProduct.get(i));
         }
@@ -116,7 +125,7 @@ public class ChooseListAdpater extends RecyclerView.Adapter<ChooseListAdpater.Vi
             btnList = (RelativeLayout)itemView.findViewById(R.id.btnList);
             txtNameList = (EBCustomFont)itemView.findViewById(R.id.txtNameList);
             txtNextList = (EBCustomFont)itemView.findViewById(R.id.txtNextList);
-            btnList.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listCategoryProduct!=null){

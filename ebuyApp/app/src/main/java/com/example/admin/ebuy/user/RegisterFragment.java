@@ -57,38 +57,8 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 //        btnLogin = (Button)view.findViewById(R.id.btnLogin);
         btnRegister = (Button)view.findViewById(R.id.btnRegister);
 
-        getConfig();
         btnRegister.setOnClickListener(this);
 
-    }
-    private void getConfig(){
-        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
-                .getConfig()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ConfigResponse>() {
-                @Override
-                public void onCompleted() {
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    WriteLog.e("TAG", e.getMessage().toString());
-                }
-
-                @Override
-                public void onNext(ConfigResponse configResponse) {
-
-                    WriteLog.e("TAG", configResponse.toString());
-                    if(configResponse.getReplyCode()!= AppConfig.SUCCESS_CODE){
-
-                    }else {
-                        PrefUtils.getInstance().putString(CurrentUser.TOKEN_NO_LOGIN, configResponse.getData().getApiKey());
-
-                    }
-                }
-        });
     }
     private boolean checkValidate() {
         if (txtPhonenumber.getText().toString().isEmpty()) {
@@ -148,7 +118,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                 } else {
                     CurrentUser.setUserInfo(userResponse.getUser());
                     CurrentUser.saveUserInfo(userResponse.getUser());
-                    getActivity().finish();
+                    getActivity().onBackPressed();
 //                                    Navigator.getInstance().startFragment();
 //                                    getActivity().finish();
                 }
@@ -187,17 +157,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
                                 if (registerResponse.getReplyCode() != AppConfig.SUCCESS_CODE) {
                                     alertError(registerResponse.getReplyText(), SweetAlertDialog.ERROR_TYPE, getResources().getString(R.string.error));
                                 } else{
-
-//                                    ViewGroup viewGroup = (ViewGroup) getLayoutInflater().inflate(R.layout.user_fragment, null);
-//                                    EBCustomFont btnLogin = (EBCustomFont)viewGroup.findViewById(R.id.btnLogin);
-//                                    btnLogin.setVisibility(View.INVISIBLE);
-//                                    EBCustomFont btnRegister = (EBCustomFont)viewGroup.findViewById(R.id.btnRegister);
-//                                    btnRegister.setVisibility(View.INVISIBLE);
-
-//                                    LayoutInflater layoutInflater = LayoutInflater.from(self.getContext());
-//                                    View view = layoutInflater.inflate(R.layout.user_fragment,null,false);
-//                                    view.findViewById(R.id.btnLogin).setVisibility(View.INVISIBLE);
-//                                    view.findViewById(R.id.btnRegister).setVisibility(View.INVISIBLE);
                                     login(txtUserName.getText().toString(), txtPassword.getText().toString());
                                 }
                             }

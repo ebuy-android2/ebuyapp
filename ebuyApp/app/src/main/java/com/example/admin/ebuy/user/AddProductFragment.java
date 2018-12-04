@@ -42,7 +42,7 @@ public class AddProductFragment extends BaseFragment implements View.OnClickList
         edtCount = (EditText)view.findViewById(R.id.edtCount);
         edtWeight = (EditText)view.findViewById(R.id.edtWeight);
         edtStatus = (EditText)view.findViewById(R.id.edtStatus);
-        btnListProduct = (RelativeLayout)view.findViewById(R.id.btnListProduct);
+//        btnListProduct = (RelativeLayout)view.findViewById(R.id.btnListProduct);
         txtTypeProduct = (EBCustomFont)view.findViewById(R.id.txtTypeProduct);
 
         if (savedInstanceState!=null) {
@@ -53,7 +53,7 @@ public class AddProductFragment extends BaseFragment implements View.OnClickList
         }
         txtTypeProduct.setText("");
 
-        btnListProduct.setOnClickListener(this);
+        txtTypeProduct.setOnClickListener(this);
 
     }
 
@@ -65,7 +65,7 @@ public class AddProductFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnListProduct:
+            case R.id.txtTypeProduct:
                 Navigator.getInstance().startFragment(getContext(), ChooseListProductFragment.TAG, SupportActivity.class, null);
                 break;
         }

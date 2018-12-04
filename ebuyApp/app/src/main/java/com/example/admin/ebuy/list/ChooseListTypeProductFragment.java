@@ -38,10 +38,13 @@ public class ChooseListTypeProductFragment extends BaseFragment {
         int data= savedInstanceState.getInt("id");
         String name = savedInstanceState.getString("name");
 
+        ((BaseActivity)getActivity()).setVisibleFinish(false);
+        ((BaseActivity)getActivity()).setVisibleBack(true);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycleViewList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(linearLayoutManager);
         chooseListAdpater = new ChooseListAdpater(this);
 
         getTypeProduct(data);

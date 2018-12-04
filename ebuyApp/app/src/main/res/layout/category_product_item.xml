@@ -24,6 +24,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="@dimen/margin_smallXX"
         android:padding="@dimen/padding_smallX"
+        android:ellipsize="end"
         />
     </LinearLayout>
 </LinearLayout>

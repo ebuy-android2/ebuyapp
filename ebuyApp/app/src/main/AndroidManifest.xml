@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-feature android:name="android.hardware.location.gps" />
+
     <application
         tools:replace="android:icon"
         android:allowBackup="true"
@@ -25,7 +27,6 @@
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true"/>
-
         <activity android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -37,7 +38,8 @@
         </activity>
         <activity android:name=".MainActivity" >
         </activity>
-        <activity android:name=".user.activity.UserActivity"   android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".user.activity.UserActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".home.activity.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
 

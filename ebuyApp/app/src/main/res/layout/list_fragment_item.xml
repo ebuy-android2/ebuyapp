@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btnList"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size_30">
-
-    <RelativeLayout
-        android:id="@+id/btnList"
-        android:layout_width="match_parent"
+    android:layout_height="@dimen/size_40">
+    <com.example.admin.ebuy.view.EBCustomFont
+        android:id="@+id/txtNameList"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <com.example.admin.ebuy.view.EBCustomFont
-            android:id="@+id/txtNameList"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_30"
-            android:layout_marginLeft="@dimen/margin_small"
-            android:textStyle="normal"
-            android:textColor="@color/black"
-            android:text="@string/status"/>
-        <com.example.admin.ebuy.view.EBCustomFont
-            android:id="@+id/txtNextList"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_30"
-            android:drawableRight="@drawable/ic_right_arrow"
-            android:layout_marginRight="@dimen/margin_small"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
-
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:text="@string/status"/>
+    <com.example.admin.ebuy.view.EBCustomFont
+        android:id="@+id/txtNextList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:drawableRight="@drawable/ic_right_arrow"
+        android:layout_marginRight="@dimen/margin_small"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

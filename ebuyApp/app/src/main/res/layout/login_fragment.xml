@@ -46,7 +46,7 @@
             android:textCursorDrawable="@null"
             android:textColorHint="@color/gray_darkx"
             android:layout_marginTop="@dimen/margin_smallX"
-            android:inputType="textPassword|numberPassword"
+            android:inputType="textPassword"
             android:paddingLeft="7dp"
             android:textColor="@color/black"
             android:textSize="14sp" />

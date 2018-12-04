@@ -60,7 +60,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
 
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
-        getConfig();
 
     }
 
@@ -69,35 +68,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
         return TAG;
     }
 
-    private void getConfig(){
-        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
-                .getConfig()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ConfigResponse>() {
-                @Override
-                public void onCompleted() {
 
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    WriteLog.e("TAG", e.getMessage().toString());
-                }
-
-                @Override
-                public void onNext(ConfigResponse configResponse) {
-
-                    WriteLog.e("TAG", configResponse.toString());
-                    if(configResponse.getReplyCode()!= AppConfig.SUCCESS_CODE){
-
-                    }else {
-                        PrefUtils.getInstance().putString(CurrentUser.TOKEN_NO_LOGIN, configResponse.getData().getApiKey());
-
-                    }
-                }
-        });
-    }
     private boolean checkValidate() {
         if (txtUserName.getText().toString().isEmpty()) {
             alertError(getResources().getString(R.string.empty_user_name), SweetAlertDialog.WARNING_TYPE, getResources().getString(R.string.warning));

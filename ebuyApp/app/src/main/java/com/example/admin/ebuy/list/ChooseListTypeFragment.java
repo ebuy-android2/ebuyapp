@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.ChooseListAdpater;
@@ -27,21 +28,23 @@ public class ChooseListTypeFragment extends BaseFragment {
     private ChooseListAdpater chooseListAdpater;
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.list_fragment;
+        return R.layout.list_type_fragment;
     }
 
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
 
         savedInstanceState = getActivity().getIntent().getExtras();
         int data= savedInstanceState.getInt("id");
         String name = savedInstanceState.getString("name");
 
+        ((BaseActivity)getActivity()).setVisibleFinish(false);
+        ((BaseActivity)getActivity()).setVisibleBack(true);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycleViewList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(linearLayoutManager);
         chooseListAdpater = new ChooseListAdpater(this);
 
         getType(data);
@@ -51,8 +54,10 @@ public class ChooseListTypeFragment extends BaseFragment {
     public String getTagName() {
         return TAG;
     }
-    void getType(int type) {
-        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+
+    void getType(int type)
+    {
+        ServiceFactory.createRetrofitService(EBServices.class,AppConfig.getApiEndpoint())
                 .getType(type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -71,7 +76,8 @@ public class ChooseListTypeFragment extends BaseFragment {
                     public void onNext(TypeResponse typeResponse) {
                         WriteLog.e("TAG", typeResponse.toString());
 
-                        recyclerView.setHasFixedSize(true);
+
+
                         chooseListAdpater.setListType(typeResponse.getData());
                         recyclerView.setAdapter(chooseListAdpater);
                     }

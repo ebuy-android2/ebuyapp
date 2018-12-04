@@ -35,10 +35,12 @@ public class ChooseListProductFragment extends BaseFragment {
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
         ((BaseActivity)getActivity()).setVisibleFinish(false);
+        ((BaseActivity)getActivity()).setVisibleBack(true);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycleViewList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setLayoutManager(linearLayoutManager);
         chooseListAdpater = new ChooseListAdpater(this);
         getListProduct();
     }
@@ -47,9 +49,10 @@ public class ChooseListProductFragment extends BaseFragment {
     public String getTagName() {
         return TAG;
     }
+
     private void getListProduct()
     {
-        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+        ServiceFactory.createRetrofitService(EBServices.class,AppConfig.getApiEndpoint())
                 .getProduct()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread() )

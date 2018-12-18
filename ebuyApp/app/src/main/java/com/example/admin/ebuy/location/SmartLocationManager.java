@@ -28,9 +28,7 @@ import com.google.android.gms.location.LocationServices;
 import java.text.DateFormat;
 import java.util.Date;
 
-/**
- * Created by Syed Raza Mehdi Naqvi on 8/9/2016.
- */
+
 public class SmartLocationManager implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 

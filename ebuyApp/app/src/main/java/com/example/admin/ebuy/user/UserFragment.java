@@ -10,6 +10,9 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
+import com.example.admin.ebuy.adapter.ListProductAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.base.BaseFragment;
 import com.example.admin.ebuy.home.ShopDetailFragment;
@@ -28,6 +32,7 @@ import com.example.admin.ebuy.location.MapsFragment;
 import com.example.admin.ebuy.model.CurrentUser;
 import com.example.admin.ebuy.model.CustomerData;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
+import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.network.EBServices;
 import com.example.admin.ebuy.network.ServiceFactory;
 import com.example.admin.ebuy.user.activity.UserActivity;
@@ -61,6 +66,9 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     private EBCustomFont btnLogin, btnRegister, txtUsername, txtBuy, txtSale, line1, line2, btnDelivering, btnAddProductDetail, btnSeeShop;
     private LinearLayout linearLayoutBuy, linearLayoutSale;
     private CustomerData customerData;
+    private LinearLayoutManager linearLayoutManagerHorizontal;
+    private RecyclerView recyclerView;
+    private ListProductAdapter listProductAdapter;
 
     @Override
     protected int getLayoutResourceId() {
@@ -85,6 +93,10 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         linearLayoutSale = (LinearLayout)view.findViewById(R.id.linearLayoutSale);
         btnSeeShop = (EBCustomFont)view.findViewById(R.id.seeShop);
 
+
+        listProductAdapter = new ListProductAdapter(this);
+        linearLayoutManagerHorizontal = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView = view.findViewById(R.id.recyclerviewPro);
 
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
@@ -120,6 +132,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                     }
                     txtUsername.setText(CurrentUser.getUserInfo().getUserName());
                     getCustomerByID(CurrentUser.getUserInfo().getId());
+                    getListProductDetailByIdCustomer(CurrentUser.getUserInfo().getId());
                 }
                 else {
                     btnLogin.setVisibility(View.VISIBLE);
@@ -233,7 +246,35 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                         customerData = customerRespose.getData();
                     }
                 });
-
-
     }
+
+    private void getListProductDetailByIdCustomer(int id) {
+        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+                .getProductDetailOfCustomer(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ProductDetailResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(ProductDetailResponse productDetailResponse) {
+
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager(linearLayoutManagerHorizontal);
+
+                        listProductAdapter.setListProduct(productDetailResponse.getData());
+                        recyclerView.setAdapter(listProductAdapter);
+
+                    }
+                });
+    }
+
 }

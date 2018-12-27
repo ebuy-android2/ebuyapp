@@ -57,7 +57,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
         int conten =savedInstanceState.getInt("data");
         checkPager(conten);
 
-        ((BaseActivity)this).setVisibleFinish(false);
         contentView.addOnPageChangeListener(this);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.getWindow().setStatusBarColor(getResources().getColor(R.color.color_main));

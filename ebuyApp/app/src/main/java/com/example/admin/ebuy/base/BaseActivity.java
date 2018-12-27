@@ -17,10 +17,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.admin.ebuy.R;
+import com.example.admin.ebuy.model.request.ProductRequest;
+import com.example.admin.ebuy.model.respon.BaseResponse;
+import com.example.admin.ebuy.network.EBServices;
+import com.example.admin.ebuy.network.ServiceFactory;
 import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.FragmentProvider;
 import com.example.admin.ebuy.util.Navigator;
+import com.example.admin.ebuy.util.WriteLog;
 import com.example.admin.ebuy.view.EBCustomFont;
+
+import rx.Observer;
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -68,6 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         {
             ((ImageView)findViewById(R.id.imgBack)).setOnClickListener(this);
         }
+
 
 
 
@@ -122,7 +133,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(getFragmentContainerViewId(), fragment, fragment.getTagName());
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
+        ft.commitAllowingStateLoss();
     }
 
     public void setTitle(boolean allCap, String title) {
@@ -131,15 +142,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             ((TextView) findViewById(R.id.txtTitleHeader)).setAllCaps(allCap);
         }
     }
-    public void setVisibleFinish(boolean b){
-        if (findViewById(R.id.txtFinish)!=null){
-            if(b ==true){
-                ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.VISIBLE);
-            }
-            else
-                ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.GONE);
-        }
-    }
+//    public void setVisibleFinish(boolean b){
+//        if (findViewById(R.id.txtFinish)!=null){
+//            if(b ==true){
+//                ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.VISIBLE);
+//            }
+//            else
+//                ((EBCustomFont)findViewById(R.id.txtFinish)).setVisibility(View.GONE);
+//        }
+//    }
     public void setVisibleBack(boolean b)
     {
         if (findViewById(R.id.imgBack)!=null){
@@ -167,21 +178,21 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         return android_id;
     }
 
-    public void setToolBarTittle(String title, String subTitle, boolean allCapTitle, boolean allCapSub) {
-        ((TextView) findViewById(R.id.txtHeader)).setText(title);
-        ((TextView) findViewById(R.id.txtSubHeader)).setText(subTitle);
-        ((TextView) findViewById(R.id.txtHeader)).setAllCaps(allCapTitle);
-        ((TextView) findViewById(R.id.txtSubHeader)).setAllCaps(allCapSub);
-
-
-    }
-
-    public String getToolBarTittle() {
-        return ((TextView) findViewById(R.id.txtHeader)).getText().toString();
-
-
-
-    }
+//    public void setToolBarTittle(String title, String subTitle, boolean allCapTitle, boolean allCapSub) {
+//        ((TextView) findViewById(R.id.txtHeader)).setText(title);
+//        ((TextView) findViewById(R.id.txtSubHeader)).setText(subTitle);
+//        ((TextView) findViewById(R.id.txtHeader)).setAllCaps(allCapTitle);
+//        ((TextView) findViewById(R.id.txtSubHeader)).setAllCaps(allCapSub);
+//
+//
+//    }
+//
+//    public String getToolBarTittle() {
+//        return ((TextView) findViewById(R.id.txtHeader)).getText().toString();
+//
+//
+//
+//    }
 
     @Override
     public void onClick(View view) {
@@ -192,8 +203,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                 onBackPressed();
                 break;
 
-
         }
 
     }
+
 }

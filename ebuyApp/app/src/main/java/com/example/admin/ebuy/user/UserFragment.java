@@ -22,10 +22,16 @@ import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseActivity;
 import com.example.admin.ebuy.base.BaseFragment;
+import com.example.admin.ebuy.home.ShopDetailFragment;
 import com.example.admin.ebuy.home.activity.HomeActivity;
 import com.example.admin.ebuy.location.MapsFragment;
 import com.example.admin.ebuy.model.CurrentUser;
+import com.example.admin.ebuy.model.CustomerData;
+import com.example.admin.ebuy.model.respon.CustomerRespose;
+import com.example.admin.ebuy.network.EBServices;
+import com.example.admin.ebuy.network.ServiceFactory;
 import com.example.admin.ebuy.user.activity.UserActivity;
+import com.example.admin.ebuy.util.AppConfig;
 import com.example.admin.ebuy.util.Navigator;
 import com.example.admin.ebuy.util.WriteLog;
 import com.example.admin.ebuy.view.EBCustomFont;
@@ -35,12 +41,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -48,8 +58,9 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     public final static String TAG="UserFragment";
     private ImageView btnSetting;
     private CircleImageView imageAvatar;
-    private EBCustomFont btnLogin, btnRegister, txtUsername, txtBuy, txtSale, line1, line2, btnDelivering, btnAddProductDetail;
+    private EBCustomFont btnLogin, btnRegister, txtUsername, txtBuy, txtSale, line1, line2, btnDelivering, btnAddProductDetail, btnSeeShop;
     private LinearLayout linearLayoutBuy, linearLayoutSale;
+    private CustomerData customerData;
 
     @Override
     protected int getLayoutResourceId() {
@@ -58,10 +69,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
-
-
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
-
+        
         txtUsername = (EBCustomFont)view.findViewById(R.id.txtUserName);
         btnSetting = (ImageView)view.findViewById(R.id.btnSetting);
         imageAvatar = (CircleImageView) view.findViewById(R.id.imageAvatar);
@@ -75,6 +83,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         btnAddProductDetail = (EBCustomFont)view.findViewById(R.id.btnAddProductDetail);
         linearLayoutBuy = (LinearLayout)view.findViewById(R.id.linearLayoutBuy);
         linearLayoutSale = (LinearLayout)view.findViewById(R.id.linearLayoutSale);
+        btnSeeShop = (EBCustomFont)view.findViewById(R.id.seeShop);
 
 
         btnLogin.setOnClickListener(this);
@@ -85,6 +94,8 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         btnDelivering.setOnClickListener(this);
         btnSetting.setOnClickListener(this);
         btnAddProductDetail.setOnClickListener(this);
+        btnSeeShop.setOnClickListener(this);
+
 
     }
 
@@ -108,6 +119,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                         imageAvatar.setImageResource(R.drawable.logo);
                     }
                     txtUsername.setText(CurrentUser.getUserInfo().getUserName());
+                    getCustomerByID(CurrentUser.getUserInfo().getId());
                 }
                 else {
                     btnLogin.setVisibility(View.VISIBLE);
@@ -148,7 +160,6 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                 txtSale.setTextColor(getResources().getColor(R.color.black));
                 line1.setVisibility(View.VISIBLE);
                 line2.setVisibility(View.INVISIBLE);
-
                 break;
             case R.id.txtSale:
                 linearLayoutSale.setVisibility(View.VISIBLE);
@@ -158,7 +169,6 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                 line2.setVisibility(View.VISIBLE);
                 line2.setBackgroundColor(getResources().getColor(R.color.color_main));
                 line1.setVisibility(View.INVISIBLE);
-
                 break;
             case R.id.btnDelivering:
                 Bundle bundle = new Bundle();
@@ -169,6 +179,13 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.btnAddProductDetail:
                 Navigator.getInstance().startFragment(getContext(), AddProductFragment.TAG, UserActivity.class, null);
+                break;
+            case R.id.seeShop:
+                Bundle bundle1 = new Bundle();
+                Gson gson = new Gson();
+                String data = gson.toJson(customerData);
+                bundle1.putString("data",data);
+                Navigator.getInstance().startFragment(getContext(), ShopDetailFragment.TAG, SupportActivity.class,bundle1);
                 break;
         }
     }
@@ -195,5 +212,28 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         popupMenu.show();
 
     }
+    private void getCustomerByID(int id) {
+        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+                .getCustomerByIdProduct(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CustomerRespose>() {
+                    @Override
+                    public void onCompleted() {
 
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(CustomerRespose customerRespose) {
+                        customerData = customerRespose.getData();
+                    }
+                });
+
+
+    }
 }

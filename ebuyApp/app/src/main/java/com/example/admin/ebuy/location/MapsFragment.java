@@ -102,7 +102,6 @@ public class MapsFragment extends BaseFragment implements OnMapReadyCallback,
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
-        ((BaseActivity) getActivity()).setVisibleFinish(false);
         savedInstanceState = getActivity().getIntent().getExtras();
 
         type = savedInstanceState.getInt("Type");

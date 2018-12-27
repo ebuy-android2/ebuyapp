@@ -50,7 +50,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener{
 
         ((BaseActivity)getActivity()).setTitle(true, getResources().getString(R.string.login));
         ((BaseActivity)getActivity()).setVisibleBack(true);
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
 
         txtUserName = (EditText)view.findViewById(R.id.txtUserName);
         txtPassword = (EditText)view.findViewById(R.id.txtPassword);

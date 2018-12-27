@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseFragment;
-import com.example.admin.ebuy.model.CurrentUser;
 import com.example.admin.ebuy.model.ProductData;
 import com.example.admin.ebuy.model.StoreData;
 import com.example.admin.ebuy.model.TypeData;
@@ -185,16 +184,12 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
 
         }
         public void bindView(StoreData storeData) {
-            if (storeData.getAvatar()!=null&&!storeData.getAvatar().isEmpty()){
-                Picasso.with(baseFragment.getContext())
-                        .load(storeData.getAvatar())
-                        .placeholder(R.mipmap.ic_launcher)
-                        .into(imageView);
 
-            }else {
-                imageView.setImageResource(R.drawable.logo);
-            }
 
+            Picasso.with(baseFragment.getContext())
+                    .load(storeData.getAvatar())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(imageView);
             textView.setText(storeData.getName());
 
 

@@ -86,7 +86,6 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
 
-        ((BaseActivity) getActivity()).setVisibleFinish(false);
 
         mapped(view);
         Gson gson = new Gson();

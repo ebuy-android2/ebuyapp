@@ -715,6 +715,7 @@
                     android:orientation="horizontal">
 
                     <com.example.admin.ebuy.view.EBCustomFont
+                        android:id="@+id/seeShop"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
                         android:drawablePadding="@dimen/small"

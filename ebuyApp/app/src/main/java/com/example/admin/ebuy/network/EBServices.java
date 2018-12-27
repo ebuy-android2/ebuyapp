@@ -3,6 +3,7 @@ package com.example.admin.ebuy.network;
 import com.example.admin.ebuy.model.request.AddOrderDetailRequest;
 import com.example.admin.ebuy.model.request.CreateOrderRequest;
 import com.example.admin.ebuy.model.request.LoginRequest;
+import com.example.admin.ebuy.model.request.ProductRequest;
 import com.example.admin.ebuy.model.request.RegisterRequest;
 import com.example.admin.ebuy.model.request.UpdateProfileRequest;
 import com.example.admin.ebuy.model.respon.BaseResponse;
@@ -106,6 +107,10 @@ public interface EBServices {
     @POST(PATH+"/customers/{id}/addFeedBackExpress")
     Observable<BaseResponse> postLike(@Path("id") int id,@Query("id_product_detail") int id_pro_detail,@Query("express") int stt);
 
+
+    @Headers("Content-Type: application/json")
+    @POST(PATH+"/customers/{id}/add_product_detail")
+    Observable<BaseResponse> postProduct(@Path("id") int id, @Body ProductRequest productRequest);
 
     @GET(PATH+"/customers/{id}/getLike")
     Observable<TypeLikeResponse> getTypeLike(@Path("id") int id, @Query("id_product_detail") int id_pro_detail);

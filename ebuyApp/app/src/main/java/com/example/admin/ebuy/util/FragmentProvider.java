@@ -8,9 +8,6 @@ import com.example.admin.ebuy.home.ProductDetailFragment;
 import com.example.admin.ebuy.home.ShopDetailFragment;
 import com.example.admin.ebuy.home.TypeFragment;
 import com.example.admin.ebuy.home.TypeProductFragment;
-import com.example.admin.ebuy.list.ChooseListProductFragment;
-import com.example.admin.ebuy.list.ChooseListTypeFragment;
-import com.example.admin.ebuy.list.ChooseListTypeProductFragment;
 import com.example.admin.ebuy.list.ListProductFragment;
 import com.example.admin.ebuy.location.MapsFragment;
 import com.example.admin.ebuy.shopping.ShoppingFragment;
@@ -64,12 +61,6 @@ public class FragmentProvider {
                 return new MapsFragment();
             case EditProfileFragment.TAG:
                 return new EditProfileFragment();
-            case ChooseListProductFragment.TAG:
-                return new ChooseListProductFragment();
-            case ChooseListTypeFragment.TAG:
-                return new ChooseListTypeFragment();
-            case ChooseListTypeProductFragment.TAG:
-                return new ChooseListTypeProductFragment();
             case AddProductFragment.TAG:
                 return new AddProductFragment();
         }

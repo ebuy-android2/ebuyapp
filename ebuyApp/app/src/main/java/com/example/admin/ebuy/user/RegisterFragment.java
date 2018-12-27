@@ -48,7 +48,6 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
         ((BaseActivity)getActivity()).setTitle(true, getResources().getString(R.string.register));
         ((BaseActivity)getActivity()).setVisibleBack(true);
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
 
         txtPhonenumber = (EditText)view.findViewById(R.id.txtPhonenumber);
         txtPassword = (EditText)view.findViewById(R.id.txtPassword);

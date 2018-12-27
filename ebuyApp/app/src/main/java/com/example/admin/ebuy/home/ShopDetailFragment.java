@@ -54,8 +54,6 @@ public class ShopDetailFragment extends BaseFragment {
                 .placeholder(R.mipmap.logo)
                 .into(imgAvatarShop);
 
-
-
         ((MyGridview) gridViewProduct).setExpanded(true);
         listProductDetailAdapter = new ListProductDetailAdapter(null,this);
         ((BaseActivity)getActivity()).setTitle(true,customerData.getName());

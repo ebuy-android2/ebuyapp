@@ -8,35 +8,34 @@
 
     <ImageView
         android:id="@+id/imgBack"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
+        android:layout_centerVertical="true"
         android:src="@drawable/ic_back"
-        android:visibility="gone"/>
+        android:visibility="gone" />
     <TextView
         android:id="@+id/txtTitleHeader"
         android:text="Header"
+        android:layout_centerInParent="true"
         android:textColor="@color/white"
         android:textStyle="normal"
         android:textSize="@dimen/font_largeX"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_height="match_parent" />
-
-    <com.example.admin.ebuy.view.EBCustomFont
-        android:id="@+id/txtFinish"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish"
-        android:textColor="@color/white"
-        android:textStyle="normal"
-        android:textSize="@dimen/font_big"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/margin_small"
-        />
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+    <!--<com.example.admin.ebuy.view.EBCustomFont-->
+        <!--android:id="@+id/txtFinish"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/finish"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textStyle="normal"-->
+        <!--android:textSize="@dimen/font_big"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="@dimen/margin_small"-->
+        <!--/>-->
 
 </RelativeLayout>

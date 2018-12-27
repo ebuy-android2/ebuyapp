@@ -55,7 +55,6 @@ public class ShoppingFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState) {
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
         mapped(view);
         WriteLog.e("toan",""+CurrentUser.getUserInfo().getId());
 

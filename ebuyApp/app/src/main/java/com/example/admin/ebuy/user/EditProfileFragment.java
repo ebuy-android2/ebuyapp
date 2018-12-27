@@ -72,7 +72,6 @@ public class EditProfileFragment extends BaseFragment implements View.OnClickLis
 
         ((BaseActivity)getActivity()).setTitle(true, getResources().getString(R.string.edit_profile));
         ((BaseActivity)getActivity()).setVisibleBack(true);
-        ((BaseActivity)getActivity()).setVisibleFinish(false);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -218,6 +217,6 @@ public class EditProfileFragment extends BaseFragment implements View.OnClickLis
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
-        }
+            }
     }
 }

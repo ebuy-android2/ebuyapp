@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.model.CurrentUser;
+import com.example.admin.ebuy.model.request.ProductRequest;
 import com.example.admin.ebuy.model.respon.BaseResponse;
 import com.example.admin.ebuy.user.LoginFragment;
 import com.example.admin.ebuy.user.activity.UserActivity;
@@ -33,7 +36,7 @@ import retrofit2.adapter.rxjava.HttpException;
  * Created by tuan.nguyen on 23/6/18.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment{
     protected abstract int getLayoutResourceId();
     protected abstract void onSetBodyView(View view, ViewGroup container, Bundle savedInstanceState);
     public abstract String getTagName();
@@ -44,6 +47,7 @@ public abstract class BaseFragment extends Fragment {
     public BaseFragment self;
     @Inject
     public Navigator navigator;
+
 
 
     public boolean isNeedRefresh() {
@@ -81,8 +85,8 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navigator = Navigator.getInstance();
-
         self = this;
+
     }
 
     public void onErrorReceive(Throwable e) {

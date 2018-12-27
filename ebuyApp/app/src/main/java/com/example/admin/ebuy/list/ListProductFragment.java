@@ -58,7 +58,6 @@ public class ListProductFragment extends BaseFragment {
         listCategoryProductAdapter = new ListCategoryProductAdapter(this, null);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
 
-        ((BaseActivity) getActivity()).setVisibleFinish(false);
         getAllStore();
         Random rd = new Random();
         getListProductDetailByType(rd.nextInt(6));

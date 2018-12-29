@@ -149,6 +149,11 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
                         Navigator.getInstance().startFragment(baseFragment.getContext(), TypeProductFragment.TAG, SupportActivity.class, bundle);
 
                     }
+                    else if(listStore!=null)
+                    {
+                        Bundle bundle = new Bundle();
+
+                    }
 
                 }
             });
@@ -184,12 +189,16 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
 
         }
         public void bindView(StoreData storeData) {
+            if (storeData.getAvatar()!=null&&!storeData.getAvatar().isEmpty()){
+                Picasso.with(baseFragment.getContext())
+                        .load(storeData.getAvatar())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(imageView);
 
+            }else {
+                imageView.setImageResource(R.drawable.logo);
+            }
 
-            Picasso.with(baseFragment.getContext())
-                    .load(storeData.getAvatar())
-                    .placeholder(R.mipmap.ic_launcher)
-                    .into(imageView);
             textView.setText(storeData.getName());
 
 

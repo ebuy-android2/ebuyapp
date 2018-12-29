@@ -55,6 +55,12 @@
             android:textColor="@color/white"
             android:textSize="@dimen/font_big" />
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small"
+        android:text="Sản Phẩm"
+        android:textSize="@dimen/font_large" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,12 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/padding_small"
-        android:text="Sản Phẩm"
-        android:textSize="@dimen/font_large" />
+
 
     <com.example.admin.ebuy.view.MyGridview
         android:id="@+id/gridListProduct"

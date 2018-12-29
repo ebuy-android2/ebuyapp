@@ -117,7 +117,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
 
         ((BaseActivity) getActivity()).setTitle(true, productDetailData.getName());
-        gestureDerector();
+//        gestureDerector();
         getCustomerByID(productDetailData.getId_product());
         getFeedbackByIDProduct(productDetailData.getId_product());
         getListProductDetailByTypeProduct(productDetailData.getId_type());
@@ -164,18 +164,18 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
     }
 
-    private void gestureDerector() {
-        gestureDetector = new GestureDetector(getActivity(), new ProductDetailFragment.MyGesture());
-        linearLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-
-                gestureDetector.onTouchEvent(motionEvent);
-
-                return true;
-            }
-        });
-    }
+//    private void gestureDerector() {
+//        gestureDetector = new GestureDetector(getActivity(), new ProductDetailFragment.MyGesture());
+//        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//
+//                gestureDetector.onTouchEvent(motionEvent);
+//
+//                return true;
+//            }
+//        });
+//    }
 
     @Override
     public void onClick(View view) {

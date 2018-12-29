@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment implements ObservableScrollViewCa
 //       linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
 //        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
 //        recyclerViewProduct.addItemDecoration(dividerItemDecoration);
-        ((BaseActivity)getActivity()).setTitle(true,"trang chủ");
+
 
         getListProduct();
         getListProductDetail();

@@ -60,6 +60,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
         contentView.addOnPageChangeListener(this);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.getWindow().setStatusBarColor(getResources().getColor(R.color.color_main));
+        setTitle(true,"trang chủ");
     }
 
     @Override
@@ -77,6 +78,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnHome:
+                setTitle(true,"trang chủ");
                 this.setVisibleToolbar(true);
                 ivhome.setImageResource(R.drawable.ic_home_checked);
                 ivlist.setImageResource(R.drawable.ic_list);
@@ -85,6 +87,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(0);
                 break;
             case R.id.btnList:
+                setTitle(true,"danh sách cửa hàng");
                 this.setVisibleToolbar(true);
                 ivlist.setImageResource(R.drawable.ic_list_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
@@ -94,6 +97,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(1);
                 break;
             case R.id.btnShopping:
+                setTitle(true,"giỏ hàng");
                 this.setVisibleToolbar(true);
                 ivshopping.setImageResource(R.drawable.ic_shopping_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
@@ -125,6 +129,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 ivuser.setImageResource(R.drawable.ic_user);
                 break;
             case 1:
+
                 ivlist.setImageResource(R.drawable.ic_list_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
 
@@ -158,6 +163,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
     public void onPageSelected(int i) {
         switch (i){
             case 0:
+                setTitle(true,"trang chủ");
                 this.setVisibleToolbar(true);
                 ivhome.setImageResource(R.drawable.ic_home_checked);
                 ivlist.setImageResource(R.drawable.ic_list);
@@ -166,6 +172,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(0);
                 break;
             case 1:
+                setTitle(true,"cửa hàng");
                 this.setVisibleToolbar(true);
                 ivlist.setImageResource(R.drawable.ic_list_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
@@ -175,6 +182,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(1);
                 break;
             case 2:
+                setTitle(true,"giỏ hàng");
                 this.setVisibleToolbar(true);
                 ivshopping.setImageResource(R.drawable.ic_shopping_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
@@ -184,6 +192,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 contentView.setCurrentItem(2);
                 break;
             case 3:
+
                 this.setVisibleToolbar(false);
                 ivhome.setImageResource(R.drawable.ic_home);
                 ivlist.setImageResource(R.drawable.ic_list);

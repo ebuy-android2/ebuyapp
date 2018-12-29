@@ -65,11 +65,13 @@ public class ListProductFragment extends BaseFragment {
 }
 
     @Override
-    public boolean getUserVisibleHint() {
-        return super.getUserVisibleHint();
-
-
-
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser)
+        {
+            Random rd = new Random();
+            getListProductDetailByType(rd.nextInt(6));
+        }
     }
 
     @Override

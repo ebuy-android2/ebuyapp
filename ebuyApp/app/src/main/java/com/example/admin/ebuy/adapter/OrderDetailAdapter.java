@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.ViewHolder> {
+public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.ViewHolder>{
     BaseFragment baseFragment;
     ArrayList<OrderDetailData> listOrder;
     private SparseIntArray itemStateArray= new SparseIntArray();
@@ -54,6 +54,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.bind(listOrder.get(i),i);
 
+
     }
 
     @Override
@@ -62,6 +63,8 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
             return listOrder.size();
         return 0;
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         EBCustomFont txtName,txtPrice;

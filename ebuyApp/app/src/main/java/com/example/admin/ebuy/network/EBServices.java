@@ -1,6 +1,7 @@
 package com.example.admin.ebuy.network;
 
 import com.example.admin.ebuy.model.request.AddOrderDetailRequest;
+import com.example.admin.ebuy.model.request.CommentRequest;
 import com.example.admin.ebuy.model.request.CreateOrderRequest;
 import com.example.admin.ebuy.model.request.LoginRequest;
 import com.example.admin.ebuy.model.request.ProductRequest;
@@ -22,6 +23,8 @@ import com.example.admin.ebuy.model.respon.TypeProductResponse;
 import com.example.admin.ebuy.model.respon.TypeResponse;
 import com.example.admin.ebuy.model.respon.UpdateProfileResponse;
 import com.example.admin.ebuy.model.respon.UserResponse;
+
+import org.w3c.dom.Comment;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -111,6 +114,11 @@ public interface EBServices {
     @Headers("Content-Type: application/json")
     @POST(PATH+"/customers/{id}/add_product_detail")
     Observable<BaseResponse> postProduct(@Path("id") int id, @Body ProductRequest productRequest);
+
+
+    @Headers("Content-Type: application/json")
+    @POST(PATH+"/customers/{id}/addComment")
+    Observable<BaseResponse> sentComment(@Path("id") int id, @Body CommentRequest comment,@Query("id_product_detail") int idPro);
 
     @GET(PATH+"/customers/{id}/getLike")
     Observable<TypeLikeResponse> getTypeLike(@Path("id") int id, @Query("id_product_detail") int id_pro_detail);

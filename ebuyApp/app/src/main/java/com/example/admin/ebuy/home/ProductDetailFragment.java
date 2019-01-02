@@ -1,5 +1,6 @@
 package com.example.admin.ebuy.home;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -33,6 +35,7 @@ import com.example.admin.ebuy.model.CurrentUser;
 import com.example.admin.ebuy.model.CustomerData;
 import com.example.admin.ebuy.model.ProductDetailData;
 import com.example.admin.ebuy.model.request.AddOrderDetailRequest;
+import com.example.admin.ebuy.model.request.CommentRequest;
 import com.example.admin.ebuy.model.request.UpdateProfileRequest;
 import com.example.admin.ebuy.model.respon.BaseResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
@@ -52,6 +55,7 @@ import com.example.admin.ebuy.view.EBCustomFont;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 import rx.Observable;
 import rx.Observer;
@@ -66,7 +70,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     ImageView imgview, imgNagavition;
     FeedbackAdapter feedbackAdapter;
     RecyclerView recyclerViewCommet, recyclerViewPro;
-    Button btnSeeShop;
+    Button btnSeeShop,btnSent;
     LinearLayoutManager linearLayoutManager, linearLayoutManagerHorizontal;
 
     ListProductAdapter listProductAdapter;
@@ -78,6 +82,8 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     ProductDetailData productDetailData;
     String address="";
     CustomerData customerData;
+    EditText edtComment;
+
     @Override
     protected int getLayoutResourceId() {
         return R.layout.product_detail_fragment;
@@ -156,6 +162,9 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         txtBuynow = (TextView) view.findViewById(R.id.txtBuynow);
         addProduct = (LinearLayout) view.findViewById(R.id.addProduct);
         btnSeeShop = (Button)view.findViewById(R.id.seeShop);
+        edtComment = (EditText)view.findViewById(R.id.edtComment);
+        btnSent = view.findViewById(R.id.btnSent);
+        btnSent.setOnClickListener(this);
         addProduct.setOnClickListener(this);
         txtBuynow.setOnClickListener(this);
         txtNumLike.setOnClickListener(this);
@@ -220,8 +229,40 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                 bundle.putString("data",data);
                 Navigator.getInstance().startFragment(getContext(), ShopDetailFragment.TAG, SupportActivity.class,bundle);
                 break;
+            case R.id.btnSent:
+                if (!edtComment.getText().toString().isEmpty())
+                    sentComment();
+                else alertError("Thông báo",SweetAlertDialog.ERROR_TYPE,"Vui lòng nhập phản hồi");
+                break;
 
         }
+    }
+
+    private void sentComment() {
+        CommentRequest comment = new CommentRequest();
+        comment.setComment(edtComment.getText().toString());
+        ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
+                .sentComment(CurrentUser.getUserInfo().getId(),comment,productDetailData.getId_detail())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseResponse baseResponse) {
+                        edtComment.getText().clear();
+                        alertError("Thông báo",SweetAlertDialog.SUCCESS_TYPE,"Đã gửi phản hồi");
+
+                    }
+                });
     }
 
     public class MyGesture extends GestureDetector.SimpleOnGestureListener {
@@ -351,7 +392,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
                     @Override
                     public void onNext(BaseResponse baseResponse) {
-                        Toast.makeText(getContext(), "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -435,7 +476,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
                                         @Override
                                         public void onNext(BaseResponse baseResponse) {
-                                            Toast.makeText(getContext(), "type"+typeLikeResponse.getData().getType(), Toast.LENGTH_SHORT).show();
+//                                            Toast.makeText(getContext(), "type"+typeLikeResponse.getData().getType(), Toast.LENGTH_SHORT).show();
                                             if (typeLikeResponse.getData().getType()==1)
                                             {
                                                 txtNumLike.setText((productDetailData.getNumLike())+"");

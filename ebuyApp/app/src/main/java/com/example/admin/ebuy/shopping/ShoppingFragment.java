@@ -1,5 +1,6 @@
 package com.example.admin.ebuy.shopping;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -104,6 +105,18 @@ public class ShoppingFragment extends BaseFragment implements View.OnClickListen
 
 
     }
+
+    void buyDialog()
+    {
+        AlertDialog.Builder a = new AlertDialog.Builder(getActivity());
+        final View dialogView = getLayoutInflater().inflate(R.layout.fragment_buy,null);
+
+        a.setView(dialogView);
+        final AlertDialog alertDialog =  a.create();
+        alertDialog.show();
+
+
+    }
     void getOrderDetail()
     {
         ServiceFactory.createRetrofitService(EBServices.class,AppConfig.getApiEndpoint())
@@ -180,7 +193,7 @@ public class ShoppingFragment extends BaseFragment implements View.OnClickListen
 
             case R.id.txtBuynow:
 
-                addOrderDetail();
+                buyDialog();
                 break;
 
         }

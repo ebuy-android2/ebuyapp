@@ -8,7 +8,7 @@
         android:id="@+id/recyclerviewOrder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_above="@+id/shopping"
         android:padding="@dimen/padding_smallX">
 
     </android.support.v7.widget.RecyclerView>

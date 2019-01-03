@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small"
+    android:background="@drawable/bg_grey">
+        <TableLayout
+            android:id="@+id/idInfomation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:layout_marginTop="@dimen/margin_small"
+            android:stretchColumns="2"
+            android:weightSum="5">
+            <TableRow>
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Đơn hàng"
+                    android:textSize="@dimen/font_large"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtNameProductDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text=""
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow android:layout_marginTop="@dimen/margin_small">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Khách hàng"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtNameCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="Nguyễn Văn B"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow android:layout_marginTop="@dimen/margin_small">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ngày đặt"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text=""
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow android:layout_marginTop="@dimen/margin_small">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Số điện thoại"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold" />
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtPhonenumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:textSize="@dimen/font_large"
+                    android:textColor="@color/black"
+                    android:text="01646706633" />
+            </TableRow>
+            <TableRow android:layout_marginTop="@dimen/margin_small">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Số lượng"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtQuatity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="1"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="@dimen/margin_small">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Giá"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="100000"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="@dimen/margin_small">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Trạng thái"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="Đang giao"
+                    android:textColor="@color/black" />
+            </TableRow>
+
+            <TableRow android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/margin_normal">
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Địa chỉ giao"
+                    android:textSize="@dimen/font_large"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <com.example.admin.ebuy.view.EBCustomFont
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:text="xóm 2, Hải Cính, Hải Hậu, Nam Định "
+                    android:textColor="@color/black" />
+            </TableRow>
+        </TableLayout>
+</RelativeLayout>
+
+

@@ -14,6 +14,7 @@ import com.example.admin.ebuy.shopping.ShoppingFragment;
 import com.example.admin.ebuy.user.AddProductFragment;
 import com.example.admin.ebuy.user.EditProfileFragment;
 import com.example.admin.ebuy.user.LoginFragment;
+import com.example.admin.ebuy.user.ManageOrderFragment;
 import com.example.admin.ebuy.user.RegisterFragment;
 import com.example.admin.ebuy.user.UserFragment;
 
@@ -63,6 +64,8 @@ public class FragmentProvider {
                 return new EditProfileFragment();
             case AddProductFragment.TAG:
                 return new AddProductFragment();
+            case ManageOrderFragment.TAG:
+                return new ManageOrderFragment();
         }
 
         if (fragment != null)

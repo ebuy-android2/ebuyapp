@@ -511,6 +511,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/relativerOrder"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40"
                     android:layout_marginTop="@dimen/margin_small"
@@ -524,7 +525,7 @@
                         android:drawablePadding="@dimen/small"
                         android:gravity="center_vertical"
                         android:paddingLeft="@dimen/small"
-                        android:text="@string/wallet_ebuy"
+                        android:text="Đơn hàng"
                         android:textColor="@color/black"
                         android:typeface="normal" />
 
@@ -535,7 +536,7 @@
                         android:drawableRight="@drawable/ic_right_arrow"
                         android:gravity="center_vertical"
                         android:paddingRight="@dimen/small"
-                        android:text="@string/see_wallet_ebuy" />
+                        android:text="Xem đơn hàng" />
                 </RelativeLayout>
 
                 <RelativeLayout

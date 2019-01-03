@@ -27,6 +27,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
 
     public void setListProduct(ArrayList<ProductDetailData> listProduct) {
         this.listProduct = listProduct;
+        notifyDataSetChanged();
     }
 
     public ListProductAdapter(BaseFragment baseFragment) {

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
@@ -69,6 +70,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayoutManager linearLayoutManagerHorizontal;
     private RecyclerView recyclerView;
     private ListProductAdapter listProductAdapter;
+    private RelativeLayout relativerOrder;
 
     @Override
     protected int getLayoutResourceId() {
@@ -92,7 +94,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         linearLayoutBuy = (LinearLayout)view.findViewById(R.id.linearLayoutBuy);
         linearLayoutSale = (LinearLayout)view.findViewById(R.id.linearLayoutSale);
         btnSeeShop = (EBCustomFont)view.findViewById(R.id.seeShop);
-
+        relativerOrder = view.findViewById(R.id.relativerOrder);
 
         listProductAdapter = new ListProductAdapter(this);
         linearLayoutManagerHorizontal = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -107,8 +109,9 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         btnSetting.setOnClickListener(this);
         btnAddProductDetail.setOnClickListener(this);
         btnSeeShop.setOnClickListener(this);
-
-
+        if (CurrentUser.isLogin() || !CurrentUser.getUserInfo().getAccessToken().isEmpty()) {
+            relativerOrder.setOnClickListener(this);
+        }
     }
 
     @Override
@@ -200,6 +203,9 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
                 bundle1.putString("data",data);
                 Navigator.getInstance().startFragment(getContext(), ShopDetailFragment.TAG, SupportActivity.class,bundle1);
                 break;
+            case R.id.relativerOrder:
+                Navigator.getInstance().startFragment(getContext(), ManageOrderFragment.TAG, SupportActivity.class, null);
+                break;
         }
     }
     // btnSetting
@@ -227,7 +233,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
     }
     private void getCustomerByID(int id) {
         ServiceFactory.createRetrofitService(EBServices.class, AppConfig.getApiEndpoint())
-                .getCustomerByIdProduct(id)
+                .getCustomerById(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<CustomerRespose>() {

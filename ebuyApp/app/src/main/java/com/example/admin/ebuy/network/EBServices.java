@@ -12,6 +12,7 @@ import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
 import com.example.admin.ebuy.model.respon.LikeResponse;
+import com.example.admin.ebuy.model.respon.ManageOrderResponse;
 import com.example.admin.ebuy.model.respon.OrderDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductDetailResponse;
 import com.example.admin.ebuy.model.respon.ProductResponse;
@@ -82,6 +83,12 @@ public interface EBServices {
 
     @GET(PATH+"/product/getCustomerByIdProduct")
     Observable<CustomerRespose> getCustomerByIdProduct(@Query("id_Product")int id);
+
+    @GET(PATH+"/customers/getCustomerById")
+    Observable<CustomerRespose> getCustomerById(@Query("id")int id);
+
+    @GET(PATH+"/customers/{id}/getAllOrderDetailOfCustomerSale")
+    Observable<ManageOrderResponse> getAllOrderDetailOfCustomerSale(@Path("id") int id);
 
     @GET(PATH+"/feedbacks/getAllByIdProductDetail")
     Observable<FeedBackResponse> getFeedbackByIdProduct(@Query("id_product_detail")int id);

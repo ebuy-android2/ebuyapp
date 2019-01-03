@@ -25,6 +25,16 @@ public class CreateOrderRequest {
     private float total_amount;
     @JsonField(name = "orderDetail")
     ArrayList<OrderDetailRequest> orderDetail;
+    @JsonField(name = "phone_number")
+    String phonenumber;
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
 
     public CreateOrderRequest() {
     }

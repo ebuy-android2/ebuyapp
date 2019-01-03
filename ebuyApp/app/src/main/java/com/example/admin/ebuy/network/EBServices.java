@@ -8,6 +8,7 @@ import com.example.admin.ebuy.model.request.ProductRequest;
 import com.example.admin.ebuy.model.request.RegisterRequest;
 import com.example.admin.ebuy.model.request.UpdateProfileRequest;
 import com.example.admin.ebuy.model.respon.BaseResponse;
+import com.example.admin.ebuy.model.respon.CityResponse;
 import com.example.admin.ebuy.model.respon.ConfigResponse;
 import com.example.admin.ebuy.model.respon.CustomerRespose;
 import com.example.admin.ebuy.model.respon.FeedBackResponse;
@@ -132,5 +133,17 @@ public interface EBServices {
 
     @GET(PATH+"/customers/getall")
     Observable<StoreResponse> getAllCustomer();
+
+    @GET(PATH+"/cities/getall")
+    Observable<CityResponse> getCity();
+
+    @GET(PATH+"/districts/getall")
+    Observable<CityResponse> getCounty(@Query("id_city")int id);
+
+    @GET(PATH+"/wards/getall")
+    Observable<CityResponse> getWard(@Query("id_district")int id);
+
+    @GET(PATH+"/customers/{id}/deleteOrderDetailById")
+    Observable<BaseResponse> deleteOrder(@Path("id")int id,@Query("idOrderDetail")int idOrder);
 
 }

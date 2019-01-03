@@ -25,6 +25,8 @@
             android:textSize="@dimen/font_big"
             android:textColor="@color/black"
             android:padding="@dimen/padding_small"
+            android:maxLines="1"
+            android:ellipsize="end"
 
             />
         <com.example.admin.ebuy.view.EBCustomFont

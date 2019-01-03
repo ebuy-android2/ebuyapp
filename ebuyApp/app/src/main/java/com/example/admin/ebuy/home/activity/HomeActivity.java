@@ -3,22 +3,28 @@ package com.example.admin.ebuy.home.activity;
 import android.os.Bundle;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.adapter.HomeAdapter;
 import com.example.admin.ebuy.base.BaseActivity;
+import com.example.admin.ebuy.model.CurrentUser;
+import com.example.admin.ebuy.user.EditProfileFragment;
+import com.example.admin.ebuy.user.activity.UserActivity;
+import com.example.admin.ebuy.util.Navigator;
 import com.example.admin.ebuy.util.WriteLog;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
     public ViewPager contentView;
     private HomeAdapter homeAdapter;
     private LinearLayout btnHome,btnShopping,btnUser,btnList;
-    ImageView ivhome,ivlist,ivshopping,ivuser;
+    ImageView ivhome,ivlist,ivshopping,ivuser,imgMenu;
     public  RelativeLayout rlHeader;
 
     @Override
@@ -38,6 +44,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
         ivlist = (ImageView)findViewById(R.id.ivList);
         ivshopping = (ImageView)findViewById(R.id.ivShopping);
         ivuser = (ImageView)findViewById(R.id.ivUser);
+        imgMenu = (ImageView)findViewById(R.id.imgMenu);
+        imgMenu.setOnClickListener(this);
 
 
         btnHome= (LinearLayout) findViewById(R.id.btnHome);
@@ -114,6 +122,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 ivuser.setImageResource(R.drawable.ic_user_checked);
                 contentView.setCurrentItem(3);
                 break;
+
         }
     }
 
@@ -183,6 +192,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
                 break;
             case 2:
                 setTitle(true,"giỏ hàng");
+                imgMenu.setVisibility(View.VISIBLE);
                 this.setVisibleToolbar(true);
                 ivshopping.setImageResource(R.drawable.ic_shopping_checked);
                 ivhome.setImageResource(R.drawable.ic_home);
@@ -207,4 +217,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener,V
     public void onPageScrollStateChanged(int i) {
 
     }
+
+//
 }

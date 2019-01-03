@@ -97,7 +97,7 @@ public class ListProductFragment extends BaseFragment {
 
                     @Override
                     public void onNext(StoreResponse storeResponse) {
-                        WriteLog.e("TAG", storeResponse.toString());
+                        WriteLog.e("TOAN123", storeResponse.toString());
 //
 
                         recyclerViewProduct.setHasFixedSize(true);

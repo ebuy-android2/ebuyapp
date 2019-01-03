@@ -83,6 +83,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     String address="";
     CustomerData customerData;
     EditText edtComment;
+    int idCustomer;
 
     @Override
     protected int getLayoutResourceId() {
@@ -230,9 +231,9 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                 Navigator.getInstance().startFragment(getContext(), ShopDetailFragment.TAG, SupportActivity.class,bundle);
                 break;
             case R.id.btnSent:
-                if (!edtComment.getText().toString().isEmpty())
+                if (!edtComment.getText().toString().isEmpty() && CurrentUser.getUserInfo().getId()!=idCustomer)
                     sentComment();
-                else alertError("Thông báo",SweetAlertDialog.ERROR_TYPE,"Vui lòng nhập phản hồi");
+                else alertError("Thông báo",SweetAlertDialog.ERROR_TYPE,"Không cho phép đánh giá");
                 break;
 
         }
@@ -295,6 +296,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                     @Override
                     public void onNext(CustomerRespose customerRespose) {
                         customerData = customerRespose.getData();
+                        idCustomer = customerRespose.getData().getId();
                         address = customerRespose.getData().getAddress();
                         txtAddressShop.setText(customerRespose.getData().getAddress());
                         txtNameShop.setText(customerRespose.getData().getName());
@@ -392,7 +394,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
                     @Override
                     public void onNext(BaseResponse baseResponse) {
-//                        Toast.makeText(getContext(), "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
                     }
                 });
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.admin.ebuy.R;
 import com.example.admin.ebuy.activity.SupportActivity;
 import com.example.admin.ebuy.base.BaseFragment;
+import com.example.admin.ebuy.home.ShopDetailFragment;
 import com.example.admin.ebuy.model.ProductData;
 import com.example.admin.ebuy.model.StoreData;
 import com.example.admin.ebuy.model.TypeData;
@@ -20,6 +21,7 @@ import com.example.admin.ebuy.model.TypeProductData;
 import com.example.admin.ebuy.home.TypeFragment;
 import com.example.admin.ebuy.home.TypeProductFragment;
 import com.example.admin.ebuy.util.Navigator;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -151,8 +153,11 @@ public class ListCategoryProductAdapter extends RecyclerView.Adapter<ListCategor
                     }
                     else if(listStore!=null)
                     {
+                        Gson gson = new Gson();
                         Bundle bundle = new Bundle();
-
+                        String data = gson.toJson(listStore.get(getAdapterPosition()));
+                        bundle.putString("data",data);
+                        Navigator.getInstance().startFragment(baseFragment.getContext(),ShopDetailFragment.TAG,SupportActivity.class,bundle);
                     }
 
                 }

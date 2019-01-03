@@ -1,4 +1,4 @@
-package com.example.admin.ebuy.inter;
+package com.example.admin.ebuy.interfaces;
 
 import android.view.View;
 

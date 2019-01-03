@@ -56,7 +56,7 @@
             android:id="@+id/txtSumprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:paddingLeft="@dimen/padding_small"
             android:text="Giá"
             android:textColor="@color/color_main"
@@ -66,7 +66,7 @@
             android:id="@+id/txtBuynow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.25"
             android:background="@color/color_main"
             android:gravity="center"
 

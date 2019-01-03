@@ -45,9 +45,6 @@ public class ManageOrderFragment extends BaseFragment{
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(), linearLayoutManager.getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-
         manageOrderAdapter = new ManageOrderAdapter(this);
         getAllOrderDetailOfCustomerSale(CurrentUser.getUserInfo().getId());
     }

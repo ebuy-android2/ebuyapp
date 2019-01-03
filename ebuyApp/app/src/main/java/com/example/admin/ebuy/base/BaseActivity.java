@@ -78,6 +78,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         {
             ((ImageView)findViewById(R.id.imgBack)).setOnClickListener(this);
         }
+        if((ImageView)findViewById(R.id.imgMenu)!=null)
+        {
+            ((ImageView)findViewById(R.id.imgMenu)).setOnClickListener(this);
+        }
 
 
 

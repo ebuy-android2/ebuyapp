@@ -7,6 +7,8 @@ import com.bluelinelabs.logansquare.annotation.JsonObject;
 public class OrderDetailData {
     @JsonField(name = "id")
     private int id;
+    @JsonField(name = "id_product_detail")
+    private int id_product_detail;
     @JsonField(name = "name")
     private String name;
     @JsonField(name = "price")
@@ -15,6 +17,34 @@ public class OrderDetailData {
     private String avatar;
     @JsonField(name = "status")
     private boolean status;
+    @JsonField(name = "quantity")
+    private int quantity;
+    @JsonField(name = "max_quantity")
+    private int max_quantity;
+
+    public int getMax_quantity() {
+        return max_quantity;
+    }
+
+    public void setMax_quantity(int max_quantity) {
+        this.max_quantity = max_quantity;
+    }
+
+    public int getId_product_detail() {
+        return id_product_detail;
+    }
+
+    public void setId_product_detail(int id_product_detail) {
+        this.id_product_detail = id_product_detail;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int getId() {
         return id;
